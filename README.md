@@ -85,3 +85,6 @@ each of the following variables:
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
 
 
+## HELPFUL WORKFLOW REMINDER
+* General Workflow:
+-DB Tables => Backend Routes => Frontend Components => Error Handling => Styling
