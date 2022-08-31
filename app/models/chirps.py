@@ -10,3 +10,5 @@ class Chirp(db.Model):
     chirps = db.Column(db.Varchar(280), nullable=False)
     image_url = db.Column(db.Varchar, nullable=True)
     created_at = db.Column(db.DateTime(timezone=True), db.func.now())
+
+    
