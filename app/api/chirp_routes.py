@@ -44,7 +44,7 @@ def create_chirp():
     if new_chirp.validate_on_submit():
         chirp = Chirp(
             user_id = user_id,
-            chirp_content = chirp_content
+            chirp_content = chirp_content,
             image_url = image_url
         )
     
