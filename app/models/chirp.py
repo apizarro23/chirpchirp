@@ -1,4 +1,3 @@
-from time import timezone
 from .db import db
 
 

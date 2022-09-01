@@ -6,32 +6,44 @@ def seed_users():
     demo = User(
         username='Demo', 
         email='demo@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test01.url',
+        bio= 'BIO 01'
     )
     tonyp = User(
         username='tonyp', 
         email='tonyp@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test02.url',
+        bio= 'BIO 02'
     )
     whit = User(
         username='whit', 
         email='whitm@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test03.url',
+        bio= 'BIO 03'
     )
     cesar = User(
         username='cez', 
         email='cesars@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test04.url',
+        bio= 'BIO 04'
     )
     vlad = User(
         username='vlad', 
         email='vladr@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test05.url',
+        bio= 'BIO 05'
     )
     david = User(
         username='david', 
         email='davidh@aa.io', 
-        password='password'
+        password='password',
+        profile_pic= 'test06.url',
+        bio= 'BIO 06'
     )
 
     db.session.add(demo)
