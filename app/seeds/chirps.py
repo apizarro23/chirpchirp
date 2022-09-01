@@ -42,6 +42,6 @@ def seed_chirps():
 
     db.session.commit()
 
-    def undo_chirps():
-        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
-        db.session.commit()
+def undo_chirps():
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.commit()
