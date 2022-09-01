@@ -4,15 +4,54 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='Demo', 
+        email='demo@aa.io', 
+        password='password',
+        profile_pic= 'test01.url',
+        bio= 'BIO 01'
+    )
+    tonyp = User(
+        username='tonyp', 
+        email='tonyp@aa.io', 
+        password='password',
+        profile_pic= 'test02.url',
+        bio= 'BIO 02'
+    )
+    whit = User(
+        username='whit', 
+        email='whitm@aa.io', 
+        password='password',
+        profile_pic= 'test03.url',
+        bio= 'BIO 03'
+    )
+    cesar = User(
+        username='cez', 
+        email='cesars@aa.io', 
+        password='password',
+        profile_pic= 'test04.url',
+        bio= 'BIO 04'
+    )
+    vlad = User(
+        username='vlad', 
+        email='vladr@aa.io', 
+        password='password',
+        profile_pic= 'test05.url',
+        bio= 'BIO 05'
+    )
+    david = User(
+        username='david', 
+        email='davidh@aa.io', 
+        password='password',
+        profile_pic= 'test06.url',
+        bio= 'BIO 06'
+    )
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(tonyp)
+    db.session.add(whit)
+    db.session.add(cesar)
+    db.session.add(vlad)
+    db.session.add(david)
 
     db.session.commit()
 
