@@ -19,5 +19,5 @@ class Chirp(db.Model):
             'user_id': self.user_id,
             'chirps': self.chirp_content,
             'image_url': self.image_url,
-            'created_at': self.created_at
+            # 'created_at': self.created_at
         }

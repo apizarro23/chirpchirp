@@ -50,7 +50,7 @@ def create_chirp():
     
         db.session.add(chirp)
         db.session.commit()
-        return jsonify[chirp.to_dict()], 201
+        return jsonify(chirp.to_dict()), 201
 
     else:
         return {"errors": validation_errors_to_error_messages(new_chirp.errors)}, 400
