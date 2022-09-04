@@ -17,7 +17,7 @@ class Chirp(db.Model):
         return{
             'id': self.id,
             'user_id': self.user_id,
-            'chirps': self.chirp_content,
+            'chirp_content': self.chirp_content,
             'image_url': self.image_url,
             # 'created_at': self.created_at
         }

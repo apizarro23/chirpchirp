@@ -1,0 +1,8 @@
+/* Chirp Feed CSS HERE */
+
+.chirpFeed-Main-Container {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    color: white;
+}
