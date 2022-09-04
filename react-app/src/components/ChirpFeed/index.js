@@ -18,8 +18,9 @@ const ChirpFeed = () => {
     return (
         <div className="chirpFeed-Main-Container">
             {chirps.map((ele) => (
-                <div key={ele.id}>
-                    {ele.chirp_content}, {ele.image_url}
+                <div className="chirpFeed-chirp_content" key={ele.id}>
+                    {ele.chirp_content}, 
+                    <img className="chirpFeed-img" src={ele.image_url}/>
                 </div>
             ))}
         </div>
