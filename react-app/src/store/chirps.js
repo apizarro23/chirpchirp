@@ -29,7 +29,7 @@ const deleteChirpAction = (chirpId) => ({
 // ***THUNKS***
 //get all chirps
 export const getChirps = () => async (dispatch) => {
-    const response = await fetch("/api/chirps")
+    const response = await fetch("/api/chirps/")
 
     if (response.ok) {
         const chirps = await response.json()
@@ -41,11 +41,12 @@ export const getChirps = () => async (dispatch) => {
 
 //create a chirp
 export const createChirp = (chirpData) => async (dispatch) => {
-    const {chirp_content, image_url} = chirpData
-    const response = await fetch("/api/chirps", {
+    const {user_id, chirp_content, image_url} = chirpData
+    const response = await fetch("/api/chirps/", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
+            user_id,
             chirp_content,
             image_url
         })
@@ -62,7 +63,7 @@ export const createChirp = (chirpData) => async (dispatch) => {
 //edit a chirp
 export const editChirp = (chirpData) => async (dispatch) => {
     const {id, chirp_content, image_url} = chirpData
-    const response = await fetch(`/api/chirps/${id}`, {
+    const response = await fetch(`/api/chirps/${id}/`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
@@ -81,7 +82,7 @@ export const editChirp = (chirpData) => async (dispatch) => {
 
 //delete a chirp
 export const deleteChirp = (id) => async (dispatch) => {
-    const response = await fetch(`/api/chirps/${id}`, {
+    const response = await fetch(`/api/chirps/${id}/`, {
         method: "DELETE"
     })
 
@@ -104,7 +105,7 @@ const chirpReducer = (state = {}, action) => {
         }
         case CREATE_CHIRP: {
             newState = {...state}
-            newState[action.chirp.id] = action.newChirp
+            newState[action.newChirp.id] = action.newChirp
             return newState
         }
         case EDIT_CHIRP: {
