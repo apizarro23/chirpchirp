@@ -61,12 +61,12 @@ export const createChirp = (chirpData) => async (dispatch) => {
 }
 
 //edit a chirp
-export const editChirp = (payload, id) => async (dispatch) => {
-    // const {id, chirp_content, image_url} = chirpData
+export const editChirp = (chirpData) => async (dispatch) => {
+    const {id, chirp_content, image_url} = chirpData
     const response = await fetch(`/api/chirps/${id}/`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(chirp_content, image_url)
     })
 
     if (response.ok) {

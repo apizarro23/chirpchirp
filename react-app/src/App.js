@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ChirpFeed from './components/ChirpFeed/index'
 import NewChirpForm from './components/ChirpFeed/NewChirpForm';
+import ChirpDetails from './components/ChirpDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,10 @@ function App() {
           <h1>My Home Page</h1>
           <NewChirpForm/>
           <ChirpFeed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/chirps/:chirpId' exact={true}>
+          <ChirpDetails/>
+
         </ProtectedRoute>
 
       </Switch>
