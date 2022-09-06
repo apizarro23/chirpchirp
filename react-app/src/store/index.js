@@ -1,9 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+// import chirpReducer from './chirps';
+import chirps from './chirps'
 
 const rootReducer = combineReducers({
   session,
+  chirps
 });
 
 

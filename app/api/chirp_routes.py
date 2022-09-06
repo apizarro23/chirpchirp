@@ -3,14 +3,14 @@ from email.mime import image
 import json
 from flask import Blueprint, request, jsonify
 from app.models import chirp, db, Chirp, Comment
-from app.forms import chirp_form, comment_form
-from flask_login import login_required
+from app.forms import chirp_form, comment_form, ChirpForm, CommentForm
+from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
 chirp_routes = Blueprint("chirps", __name__)
 
 @chirp_routes.route("/")
-@login_required
+# @login_required
 # list all chirps
 def all_chirps():
   chirps = [chirp.to_dict() for chirp in Chirp.query.all()]
@@ -18,7 +18,7 @@ def all_chirps():
 
 
 @chirp_routes.route("/<int:chirp_id>")
-@login_required
+# @login_required
 # get chirp by id
 def chirp_by_id(chirp_id):
   chirp = Chirp.query.get(chirp_id)
@@ -30,10 +30,10 @@ def chirp_by_id(chirp_id):
 
 
 @chirp_routes.route("/", methods=["POST"])
-@login_required
+# @login_required
 # create a chirp
 def create_chirp():
-    new_chirp = chirp_form.ChirpForm()
+    new_chirp = ChirpForm()
 
     new_chirp["csrf_token"].data = request.cookies["csrf_token"]
     
@@ -41,7 +41,7 @@ def create_chirp():
     chirp_content = new_chirp.data["chirp_content"]
     image_url = new_chirp.data["image_url"]
 
-    if new_chirp.validate_on_submit():
+    if new_chirp.validate_on_submit() and current_user.id == user_id:
         chirp = Chirp(
             user_id = user_id,
             chirp_content = chirp_content,
@@ -57,7 +57,7 @@ def create_chirp():
 
 
 @chirp_routes.route("/<chirp_id>", methods=["PUT"])
-@login_required
+# @login_required
 # edit a chirp
 def edit_chirp(chirp_id):
     chirp = Chirp.query.get(chirp_id)
@@ -78,7 +78,7 @@ def edit_chirp(chirp_id):
 
 
 @chirp_routes.route("<chirp_id>", methods=["DELETE"])
-@login_required
+# @login_required
 # delete a chirp
 def delete_chirp(chirp_id):
     chirp = Chirp.query.get(chirp_id)
