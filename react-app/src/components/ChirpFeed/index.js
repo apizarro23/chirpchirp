@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import { getChirps} from "../../store/chirps"
 import "./ChirpFeed.css"
 
+
+
 const ChirpFeed = () => {
     const user = useSelector((state) => state.session.user)
     const chirps = useSelector((state) => Object.values(state.chirps))
