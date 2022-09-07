@@ -61,15 +61,16 @@ export const createChirp = (chirpData) => async (dispatch) => {
 }
 
 //edit a chirp
-export const editChirp = (chirpId, payload) => async (dispatch) => {
+export const editChirp = (payload, chirpId) => async (dispatch) => {
     // const {id, chirp_content, image_url} = chirpData
-    const response = await fetch(`/api/chirps/${chirpId}/`, {
+    console.log("THIS IS THE CHIRPID", chirpId)
+    const response = await fetch(`/api/chirps/${chirpId}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
 
-    console.log('THIS IS THE RESPONSE1', response)
+    console.log('THIS IS THE PAYLOAD!!!!!', payload)
 
 
     if (response.ok) {
