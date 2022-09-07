@@ -56,28 +56,49 @@ def create_chirp():
         return {"errors": validation_errors_to_error_messages(new_chirp.errors)}, 400
 
 
+# @chirp_routes.route("/<chirp_id>/", methods=["PUT"])
+# # @login_required
+# # edit a chirp
+# def edit_chirp(chirp_id):
+#     chirp = Chirp.query.get(chirp_id)
+#     update = request.json
+
+#     if not chirp:
+#         return "404: This Chirp does not exist."
+
+#     if "chirp_content" in update.keys():
+#         chirp.chirp_content = update["chirp_content"]
+    
+#     if "image_url" in update.keys():
+#         chirp.image_url = update["image_url"]
+
+#     db.session.commit()
+    
+#     return jsonify(chirp.to_dict()), 200
+
 @chirp_routes.route("/<chirp_id>", methods=["PUT"])
-# @login_required
-# edit a chirp
-def edit_chirp(chirp_id):
+def update_chirp(chirp_id):
     chirp = Chirp.query.get(chirp_id)
-    update = request.json
 
     if not chirp:
-        return "404: This buzz does not exist."
-
-    if "chirp_content" in update.keys():
-        chirp.chirp_content = update["chirp_content"]
+        return "Error 404: This Chirp does not exist"
     
-    if "image_url" in update.keys():
-        chirp.image_url = update["image_url"]
+    updated_chirp = ChirpForm()
+
+    updated_chirp['csrf_token'].data = request.cookies['csrf_token']
+    chirp_content = updated_chirp.data['description']
+    image_url = updated_chirp.data['image_url']
+    # display_comments = updated_chirp.data['display_comments']
+
+    chirp.chirp_content = chirp_content
+    chirp.image_url = image_url
+    # chirp.display_comments = display_comments
 
     db.session.commit()
-    
-    return jsonify(chirp.to_dict()), 200
+    return chirp.to_dict()
 
 
-@chirp_routes.route("<chirp_id>", methods=["DELETE"])
+@chirp_routes.route("/<chirp_id>", methods=["DELETE"])
 # @login_required
 # delete a chirp
 def delete_chirp(chirp_id):

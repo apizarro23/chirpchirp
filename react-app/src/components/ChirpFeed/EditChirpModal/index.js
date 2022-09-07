@@ -3,7 +3,7 @@ import { Modal } from "../../context/Modal";
 import EditChirpForm from "./EditChirpForm";
 
 const EditChirpModal = ({ chirp }) => {
-    const [showModal, setShowModal] =useState(false)
+    const [showModal, setShowModal] = useState(false)
     
     return (
         <div>

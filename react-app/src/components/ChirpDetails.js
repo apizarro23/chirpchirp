@@ -17,11 +17,11 @@ const ChirpDetails = () => {
     const chirp = useSelector(state => state?.chirps[chirpId])
     const sessionUser = useSelector(state => state.session.user)
 
-    console.log("LOOK HERE!!!!!!!!!!!!", chirp)
+    // console.log("LOOK HERE!!!!!!!!!!!!", chirp)
 
-    // const editChirp = () => {
-    //     setShowDropdown(!showDropdown)
-    // }
+    const editChirp = () => {
+        setShowDropdown(!showDropdown)
+    }
 
     useEffect(() => {
         dispatch(getChirps(chirpId))
@@ -29,7 +29,7 @@ const ChirpDetails = () => {
 
     return (
         <div>
-            <div key={chirp.id} className="single-buzz">
+            <div key={chirp?.id} className="single-buzz">
                 <div className="chirp-NavBar">
                     <div
                         className="chirps-name"
@@ -38,7 +38,8 @@ const ChirpDetails = () => {
                         setEditActive(!editActive);
                         }}
                     >
-                        <button className="chirp-options-button">
+                    
+                        <button className="chirp-options-button"> ...
                         <i className="fa-solid fa-ellipsis fa-xl"></i>
                         </button>
                     </div>
@@ -48,8 +49,8 @@ const ChirpDetails = () => {
 
                 </div>
                 <div>
-                {chirp.chirp_content}
-                <img src={chirp.img} className="single-chirp-img" alt="" />
+                {chirp?.chirp_content}
+                <img src={chirp?.img} className="single-chirp-img" alt="" />
                 </div>
             </div>
             {/* <div key={chirpId} className="chirp-detail">
