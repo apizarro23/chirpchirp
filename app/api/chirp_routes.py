@@ -88,11 +88,9 @@ def update_chirp(chirp_id):
     updated_chirp['csrf_token'].data = request.cookies['csrf_token']
     chirp_content = updated_chirp.data['description']
     image_url = updated_chirp.data['image_url']
-    # display_comments = updated_chirp.data['display_comments']
 
     chirp.chirp_content = chirp_content
     chirp.image_url = image_url
-    # chirp.display_comments = display_comments
 
     db.session.commit()
     return chirp.to_dict()
