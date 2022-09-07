@@ -84,16 +84,18 @@ def update_chirp(chirp_id):
     updated_chirp = ChirpForm()
 
     updated_chirp['csrf_token'].data = request.cookies['csrf_token']
-    chirp_content = updated_chirp.data['description']
-    image_url = updated_chirp.data['image_url']
-    # display_comments = updated_chirp.data['display_comments']
+    if updated_chirp.validate_on_submit():
+        chirp_content = updated_chirp.data['chirp_content']
+        image_url = updated_chirp.data['image_url']
+        # display_comments = updated_chirp.data['display_comments']
 
-    chirp.chirp_content = chirp_content
-    chirp.image_url = image_url
-    # chirp.display_comments = display_comments
+        chirp.chirp_content = chirp_content
+        chirp.image_url = image_url
+        # chirp.display_comments = display_comments
 
-    db.session.commit()
-    return chirp.to_dict()
+        db.session.commit()
+        return chirp.to_dict()
+    return {'errors': validation_errors_to_error_messages(updated_chirp.errors)}, 401
 
 
 @chirp_routes.route("/<chirp_id>/", methods=["DELETE"])
