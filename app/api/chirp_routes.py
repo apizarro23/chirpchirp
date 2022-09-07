@@ -134,14 +134,14 @@ def create_comment(chirp_id):
     new_comment["csrf_token"].data = request.cookies["csrf_token"]
     
     user_id = new_comment.data["user_id"]
-    comment_content = new_comment.data["chirp_comment"]
-    image_url = new_comment.data["image_url"]
+    comment_content = new_comment.data["comment_content"]
+    chirp_id = new_comment.data["chirp_id"]
 
     if new_comment.validate_on_submit():
         comment = Comment(
             user_id = user_id,
             comment_content = comment_content,
-            image_url = image_url
+            chirp_id = chirp_id
         )
     
         db.session.add(comment)

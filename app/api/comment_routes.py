@@ -10,7 +10,7 @@ from .auth_routes import validation_errors_to_error_messages
 comment_routes = Blueprint("comments", __name__)
 
 
-@comment_routes.route("</comment_id>", methods=["PUT"])
+@comment_routes.route("/<comment_id>", methods=["PUT"])
 # edit a comment
 def edit_comment(comment_id):
     form = comment_form.CommentForm()
@@ -26,13 +26,13 @@ def edit_comment(comment_id):
         return jsonify(comment.to_dict()), 200
 
 
-@comment_routes.route("</comment_id>", methods=["PUT"])
+@comment_routes.route("/<comment_id>", methods=["DELETE"])
 # delete a comment
 def delete_comment(comment_id):
     comment = Comment.query.get(comment_id)
 
     db.session.delete(comment)
-    
+
     db.session.commit()
 
     return jsonify({
