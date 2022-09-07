@@ -1,8 +1,6 @@
-from crypt import methods
-from email.mime import image
-import json
+from urllib import response
 from flask import Blueprint, request, jsonify
-from app.models import chirp, db, Chirp, Comment
+from app.models import chirp, comment, db, Chirp, Comment
 from app.forms import chirp_form, comment_form, ChirpForm, CommentForm
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
@@ -112,3 +110,44 @@ def delete_chirp(chirp_id):
         "message": "Chirp deleted",
         "status_code": 200
     }), 200
+
+
+@chirp_routes.route("/<chirp_id>/comments", methods=["GET"])
+# get comments by chirp_id
+def get_comments_by_chirp_id(chirp_id):
+    comments = Comment.query.filter(Comment.chirp_id == chirp_id).all()
+
+    if not comments:
+        return "404: Comments do not exist for this chirp"
+
+    response = [comment.to_dict() for comment in comments]
+    res = {"comments": response}
+    return res
+
+
+@chirp_routes.route("/<chirp_id>/comments", methods=["POST"])
+# @login_required
+# create a comment
+def create_comment(chirp_id):
+    new_comment = comment_form.CommentForm()
+
+    new_comment["csrf_token"].data = request.cookies["csrf_token"]
+    
+    user_id = new_comment.data["user_id"]
+    comment_content = new_comment.data["chirp_comment"]
+    image_url = new_comment.data["image_url"]
+
+    if new_comment.validate_on_submit():
+        comment = Comment(
+            user_id = user_id,
+            comment_content = comment_content,
+            image_url = image_url
+        )
+    
+        db.session.add(comment)
+        db.session.commit()
+        return jsonify(comment.to_dict()), 201
+
+    else:
+        return {"errors": validation_errors_to_error_messages(new_comment.errors)}, 400
+
