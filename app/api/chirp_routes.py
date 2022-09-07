@@ -98,7 +98,7 @@ def update_chirp(chirp_id):
     return chirp.to_dict()
 
 
-@chirp_routes.route("/<chirp_id>", methods=["DELETE"])
+@chirp_routes.route("/<chirp_id>/", methods=["DELETE"])
 # @login_required
 # delete a chirp
 def delete_chirp(chirp_id):
