@@ -1,23 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Modal } from "../context/Modal";
 
 import { getChirps} from "../../store/chirps"
 import "./ChirpFeed.css"
-import { useState } from "react";
 
 
 
 const ChirpFeed = () => {
-    const user = useSelector((state) => state.session.user)
-    const chirps = useSelector((state) => Object.values(state.chirps))
-    const dispatch = useDispatch()
     // const [showDropdown, setShowDropdown] = useState(false)
     // const [showModal, setShowModal] = useState(false)
     // const [editActive, setEditActive] = useState(false)
+    // const user = useSelector((state) => state.session.user)
+    const chirps = useSelector((state) => Object.values(state.chirps))
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getChirps())

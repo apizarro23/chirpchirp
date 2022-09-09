@@ -1,6 +1,12 @@
+from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField
 from wtforms.validators import DataRequired
+
+# def empty_chirp(form, field):
+#     chirp_content = field.data
+#     if chirp_content == "":
+#         raise ValidationError("Cannot send empty chirp!!!")
 
 
 class ChirpForm(FlaskForm):
