@@ -83,7 +83,7 @@ export const editChirp = (payload, chirpId) => async (dispatch) => {
 
 //delete a chirp
 export const deleteChirp = (id) => async (dispatch) => {
-    const response = await fetch(`/api/chirps/${id}`, {
+    const response = await fetch(`/api/chirps/${id}/`, {
         method: "DELETE"
     })
 

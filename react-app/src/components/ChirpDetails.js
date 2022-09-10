@@ -6,6 +6,7 @@ import { getComments, deleteComment } from "../store/comments";
 import EditChirpModal from "./ChirpFeed/EditChirpModal";
 import DeleteChirpModal from "./ChirpFeed/DeleteChirpModal";
 import Comments from "./Comments";
+import NewChirpForm from "./ChirpFeed/NewChirpForm";
 import "./ChirpDetails.css"
 
 const ChirpDetails = () => {
@@ -22,7 +23,7 @@ const ChirpDetails = () => {
     const chirp = useSelector(state => state?.chirps[chirpId])
     const comments = useSelector(state => Object.values(state?.comments))
 
-    // console.log("LOOK HERE!!!!!!!!!!!!", comments)
+    console.log("LOOK HERE!!!!!!!!!!!!", )
 
     const editChirp = () => {
         setShowDropdown(!showDropdown)
@@ -30,6 +31,8 @@ const ChirpDetails = () => {
 
     useEffect(() => {
         dispatch(getChirps(chirpId))
+        dispatch(getComments(chirpId))
+        
     }, [dispatch, chirpId])
 
     // const handleDelete = async (commentId) => {
@@ -59,7 +62,7 @@ const ChirpDetails = () => {
                 </div>
                 <div>
                 {chirp?.chirp_content}
-                <img src={chirp?.imgage_url} className="single-chirp-img" alt="" />
+                <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
                 <div>
                     <Comments/>

@@ -36,7 +36,7 @@ const NewCommentForm = () => {
             comment_content: comment_content,
             chirp_id: chirp.id
         }
-        console.log('USER ID IS!!!!!!!!!!!!!!!!!!', payload)
+        // console.log('USER ID IS!!!!!!!!!!!!!!!!!!', payload)
 
         const res = await dispatch(createComment(payload))
         if (res) {

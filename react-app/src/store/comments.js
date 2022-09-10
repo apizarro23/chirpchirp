@@ -87,7 +87,7 @@ export const editComment = (commentData) => async (dispatch) => {
 
 // delete a comment
 export const deleteComment = (commentId) => async (dispatch) => {
-    const response = await fetch(`api/comments/${commentId}`, {
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: "DELETE"
     })
 
