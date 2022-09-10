@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ChirpFeed from './components/ChirpFeed/index'
 import NewChirpForm from './components/ChirpFeed/NewChirpForm';
 import ChirpDetails from './components/ChirpDetails';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,9 +30,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
+          <SplashPage/>
         <h1> THIS IS THE LOGIN</h1>
           <LoginForm />
         </Route>
@@ -45,8 +46,6 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-          <NewChirpForm/>
           <ChirpFeed />
         </ProtectedRoute>
         <ProtectedRoute path='/chirps/:chirpId' exact={true}>

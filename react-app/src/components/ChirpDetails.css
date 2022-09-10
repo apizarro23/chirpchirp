@@ -1,5 +1,39 @@
 /* CSS GOES HERE */
 
+.chirpDetails-main-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    background-color: #242D34;
+    color: white;
+    box-sizing: border-box;
+}
+
+.chirpDetails-left-container {
+    display: flex;
+}
+
+.chirpDetails-middle-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden scroll;
+    padding-top: 1em;
+}
+
+.chirpDetails-middle-container::-webkit-scrollbar {
+    display: none;
+}
+
+.chirpDetails-right-container {
+    display: flex;
+}
+
+
 .chirp-details-comments-container {
     background-color: red;
 }

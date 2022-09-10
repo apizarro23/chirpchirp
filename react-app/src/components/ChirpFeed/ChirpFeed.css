@@ -1,17 +1,43 @@
 /* Chirp Feed CSS HERE */
 
 .chirpFeed-Main-Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: #242D34;
     color: white;
     box-sizing: border-box;
 }
 
+.chirpFeed-middle-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden scroll;
+    padding-top: 1em;
+}
+
+.chirpFeed-middle-container::-webkit-scrollbar {
+    display: none;
+}
+
+.create-newchirp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .chirpFeed-chirp_content {
+    display: flex;
+    flex-direction: column-reverse;
     border: 10px solid greenyellow;
     box-sizing: border-box;
     margin: 1em;
+    padding: 1em;
 }
 .chirpFeed-img {
     max-width: 400px;

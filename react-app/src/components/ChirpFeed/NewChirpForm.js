@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { createChirp } from "../../store/chirps";
 import { getComments } from "../../store/comments";
+import "./NeChirpForm.css"
 
 const NewChirpForm = () => {
     const [errors, setErrors] = useState([]);
@@ -71,7 +72,7 @@ const NewChirpForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="newchirpform" onSubmit={handleSubmit}>
             <div>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>

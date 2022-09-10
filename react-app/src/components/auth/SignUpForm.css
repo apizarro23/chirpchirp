@@ -1,0 +1,9 @@
+input {
+    display: flex;
+    width: 200px;
+  }
+  
+  .errors {
+    color: red;
+  }
+  
