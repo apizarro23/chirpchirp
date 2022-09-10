@@ -23,7 +23,7 @@ const ChirpDetails = () => {
     const chirp = useSelector(state => state?.chirps[chirpId])
     const comments = useSelector(state => Object.values(state?.comments))
 
-    console.log("LOOK HERE!!!!!!!!!!!!", )
+    // console.log("LOOK HERE!!!!!!!!!!!!", )
 
     const editChirp = () => {
         setShowDropdown(!showDropdown)

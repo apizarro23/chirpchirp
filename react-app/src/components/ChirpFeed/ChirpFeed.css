@@ -1,6 +1,12 @@
 /* Chirp Feed CSS HERE */
 
 .chirpFeed-Main-Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     height: 100%;
     width: 100%;
     background-color: red;
@@ -8,7 +14,21 @@
     box-sizing: border-box;
 }
 
+.chirpFeed-middle-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden scroll;
+}
+
+.create-newchirp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .chirpFeed-chirp_content {
+    display: flex;
+    flex-direction: column-reverse;
     border: 10px solid greenyellow;
     box-sizing: border-box;
     margin: 1em;

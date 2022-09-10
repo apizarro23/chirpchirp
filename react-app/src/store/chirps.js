@@ -70,7 +70,7 @@ export const editChirp = (payload, chirpId) => async (dispatch) => {
         body: JSON.stringify(payload)
     })
 
-    console.log('THIS IS THE PAYLOAD!!!!!', payload)
+    // console.log('THIS IS THE PAYLOAD!!!!!', payload)
 
 
     if (response.ok) {
