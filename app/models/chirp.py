@@ -11,7 +11,7 @@ class Chirp(db.Model):
     # created_at = db.Column(db.DateTime(timezone=True), db.func.now())
 
     user = db.relationship('User', back_populates='chirps')
-    comments = db.relationship('Comment', back_populates='chirps')
+    comments = db.relationship('Comment', back_populates='chirps', cascade="all, delete-orphan")
 
     def to_dict(self):
         return{

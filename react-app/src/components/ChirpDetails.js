@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { editChirp, getChirps } from "../store/chirps";
+import { getChirps } from "../store/chirps";
+import { getComments, deleteComment } from "../store/comments";
 import EditChirpModal from "./ChirpFeed/EditChirpModal";
 import DeleteChirpModal from "./ChirpFeed/DeleteChirpModal";
+import Comments from "./Comments";
+import NewChirpForm from "./ChirpFeed/NewChirpForm";
+import "./ChirpDetails.css"
 
 const ChirpDetails = () => {
-    const [hideButtons, setHideButtons] = useState(false)
+    // const [hideButtons, setHideButtons] = useState(false)
+    // const history = useHistory()
+    // const chirps = useSelector(state => Object.values(state?.chirps))
+    // const sessionUser = useSelector(state => state?.session?.user)
+    // const chirpComments = Object.values(comments).filter((comment) => comment?.chirpId === chirp?.id)
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     let { chirpId } = useParams()
     chirpId = Number(chirpId)
     const dispatch = useDispatch()
-    const history = useHistory()
-    const chirps = useSelector(state => Object.values(state?.chirps))
     const chirp = useSelector(state => state?.chirps[chirpId])
-    const sessionUser = useSelector(state => state.session.user)
+    const comments = useSelector(state => Object.values(state?.comments))
 
-    // console.log("LOOK HERE!!!!!!!!!!!!", chirp)
+    console.log("LOOK HERE!!!!!!!!!!!!", )
 
     const editChirp = () => {
         setShowDropdown(!showDropdown)
@@ -25,7 +31,13 @@ const ChirpDetails = () => {
 
     useEffect(() => {
         dispatch(getChirps(chirpId))
+        dispatch(getComments(chirpId))
+        
     }, [dispatch, chirpId])
+
+    // const handleDelete = async (commentId) => {
+    //     await dispatch(deleteComment(commentId, chirpId))
+    // }
 
     return (
         <div>
@@ -39,7 +51,7 @@ const ChirpDetails = () => {
                         }}
                     >
                     
-                        <button className="chirp-options-button"> ...
+                        <button className="chirp-options-button">
                         <i className="fa-solid fa-ellipsis fa-xl"></i>
                         </button>
                     </div>
@@ -50,21 +62,12 @@ const ChirpDetails = () => {
                 </div>
                 <div>
                 {chirp?.chirp_content}
-                <img src={chirp?.img} className="single-chirp-img" alt="" />
+                <img src={chirp?.image_url} className="single-chirp-img" alt="" />
+                </div>
+                <div>
+                    <Comments/>
                 </div>
             </div>
-            {/* <div key={chirpId} className="chirp-detail">
-                <div className="chirp-navbar" onClick={() => {
-                    editChirp();
-                    setEditActive(!editActive)
-                }}> */}
-                    {/* <button className="chirp-options-button">
-                        OPTIONS
-                    </button> */}
-                    {/* {chirp?.chirp_content} */}
-                {/* </div>
-                <div className="serverpage-navbar-buttons"></div>
-            </div> */}
         </div>
     )
 }

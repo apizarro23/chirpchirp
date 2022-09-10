@@ -1,7 +1,8 @@
 import React, { useEffect, useState }  from "react";
 import { useSelector, useDispatch } from "react-redux"; 
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { createChirp } from "../../store/chirps";
+import { getComments } from "../../store/comments";
 
 const NewChirpForm = () => {
     const [errors, setErrors] = useState([]);
@@ -10,6 +11,14 @@ const NewChirpForm = () => {
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
+    // const comments = useSelector((state) => Object.values(state?.comments))
+    // let { chirpId } = useParams()
+    // chirpId = Number(chirpId)
+    // const chirp = useSelector(state => state?.chirps[chirpId])
+    // const commentsByChirp = Object.values(comments).filter(
+    //     (comment) => comment?.chirp_id === chirpId)
+
+    // console.log("THIS IS THE CHIRPID IS!!!", )
 
     // const createNewChirp = async (e) => {
     //     e.preventDefault();
@@ -43,11 +52,12 @@ const NewChirpForm = () => {
             chirp_content: chirp_content,
             image_url: image_url
         }
-        console.log('USER ID IS!!!!!!!!!!!!!!!!!!', payload.user_id)
+        // console.log('USER ID IS!!!!!!!!!!!!!!!!!!', payload.user_id)
 
         const res = await dispatch(createChirp(payload))
         if (res) {
             history.push('/')
+            // dispatch(getComments(comments))
         }
     }
 

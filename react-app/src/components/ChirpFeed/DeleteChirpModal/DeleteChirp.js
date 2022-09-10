@@ -1,14 +1,24 @@
-import React from "react"
-import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
+import React,{ useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory, useParams } from "react-router-dom"
 import { deleteChirp } from "../../../store/chirps"
+import { getComments } from "../../../store/comments"
 
 function DeleteChirp({chirp, onClick}) {
-    let dispatch = useDispatch()
-    let history = useHistory()
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const comments = useSelector((state) => Object.values(state?.comments))
+    let { chirpId } = useParams()
+    chirpId = Number(chirpId)
+    const commentsByChirp = Object.values(comments).filter(
+        (comment) => comment?.chirp_id === chirpId)
+
+    // console.log("LOOK HERE CHIRP!!!!!!!!", chirp)
+    
 
     const onDelete = () => {
         dispatch(deleteChirp(chirp.id))
+        dispatch(getComments(chirp.id))
         history.push("/")
     }
 

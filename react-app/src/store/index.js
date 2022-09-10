@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import session from './session'
 // import chirpReducer from './chirps';
 import chirps from './chirps'
+import comments from './comments'
 
 const rootReducer = combineReducers({
   session,
-  chirps
+  chirps,
+  comments
 });
 
 
