@@ -8,6 +8,7 @@ import DeleteChirpModal from "./ChirpFeed/DeleteChirpModal";
 import Comments from "./Comments";
 import NewChirpForm from "./ChirpFeed/NewChirpForm";
 import "./ChirpDetails.css"
+import NavBar from "./NavBar";
 
 const ChirpDetails = () => {
     // const [hideButtons, setHideButtons] = useState(false)
@@ -40,7 +41,11 @@ const ChirpDetails = () => {
     // }
 
     return (
-        <div>
+        <div className="chirpDetails-main-container">
+            <div className="chirpDetails-left-container">
+                <NavBar/>
+            </div>
+            <div className="chirpDetails-middle-container">
             <div key={chirp?.id} className="single-buzz">
                 <div className="chirp-NavBar">
                     <div
@@ -64,10 +69,16 @@ const ChirpDetails = () => {
                 {chirp?.chirp_content}
                 <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
-                <div>
+                <div className="comments-container">
                     <Comments/>
                 </div>
             </div>
+
+            </div>
+            <div className="chirpDetails-right-container">
+                THIS IS THE RIGHT SIDE
+            </div>
+
         </div>
     )
 }

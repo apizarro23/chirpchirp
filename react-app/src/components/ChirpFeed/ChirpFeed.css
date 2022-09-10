@@ -9,7 +9,7 @@
     justify-content: space-evenly;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: #242D34;
     color: white;
     box-sizing: border-box;
 }
@@ -18,6 +18,11 @@
     display: flex;
     flex-direction: column;
     overflow: hidden scroll;
+    padding-top: 1em;
+}
+
+.chirpFeed-middle-container::-webkit-scrollbar {
+    display: none;
 }
 
 .create-newchirp {
@@ -32,6 +37,7 @@
     border: 10px solid greenyellow;
     box-sizing: border-box;
     margin: 1em;
+    padding: 1em;
 }
 .chirpFeed-img {
     max-width: 400px;
