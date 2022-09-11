@@ -1,0 +1,7 @@
+.single-comment {
+    display: flex;
+    flex-direction: column-reverse;
+    box-sizing: border-box;
+    padding: 1em;
+    border: solid 2px#2F3336;
+}

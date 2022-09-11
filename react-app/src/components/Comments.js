@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink, useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { getComments } from "../store/comments";
 import NewCommentForm from "./NewCommentForm";
 import DeleteCommentModal from "./CommentsModals/DeleteCommentModal";
 import EditCommentModal from "./CommentsModals/EditCommentModal";
+import "./Comments.css"
 
 const Comments = () => {
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
+    const [users, setUsers] = useState([]);
+    const history = useHistory();
+    const user = useSelector(state => state?.session?.user)
     const dispatch = useDispatch()
     const comments = useSelector((state) => Object.values(state?.comments))
     let { chirpId } = useParams()
@@ -24,7 +28,14 @@ const Comments = () => {
     }
 
     useEffect(() => {
-        dispatch(getComments(chirpId));
+        dispatch(getComments(chirpId))
+
+        async function fetchData() {
+          const response = await fetch("/api/users/");
+          const responseData = await response.json();
+          setUsers(responseData.users);
+        }
+        fetchData()
         }, [chirpId, dispatch])
     
     if (!comments) return null
@@ -37,6 +48,7 @@ const Comments = () => {
       <div className="list-comments">
         {commentsByChirp.map((ele) => (
           <div className="single-comment">
+            {`@${users[ele?.user_id - 1]?.username} said...`}
             <div className="comment-content">
               <div>{ele.comment_content}</div>
             </div>
