@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChirps } from "../store/chirps";
 import { getComments, deleteComment } from "../store/comments";
@@ -11,11 +11,7 @@ import "./ChirpDetails.css"
 import NavBar from "./NavBar";
 
 const ChirpDetails = () => {
-    // const [hideButtons, setHideButtons] = useState(false)
-    // const history = useHistory()
-    // const chirps = useSelector(state => Object.values(state?.chirps))
-    // const sessionUser = useSelector(state => state?.session?.user)
-    // const chirpComments = Object.values(comments).filter((comment) => comment?.chirpId === chirp?.id)
+    const [users, setUsers] = useState([]);
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     let { chirpId } = useParams()
@@ -33,12 +29,12 @@ const ChirpDetails = () => {
     useEffect(() => {
         dispatch(getChirps(chirpId))
         dispatch(getComments(chirpId))
+
+
         
     }, [dispatch, chirpId])
 
-    // const handleDelete = async (commentId) => {
-    //     await dispatch(deleteComment(commentId, chirpId))
-    // }
+    console.log("THESE ARE THE USERS", users)
 
     return (
         <div className="chirpDetails-main-container">

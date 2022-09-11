@@ -18,7 +18,8 @@
     display: flex;
     flex-direction: column;
     overflow: hidden scroll;
-    padding-top: 1em;
+    /* padding-top: 1em; */
+    border: solid 2px#2F3336;
 }
 
 .chirpFeed-middle-container::-webkit-scrollbar {
@@ -29,15 +30,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: solid 2px#2F3336;
+    /* margin: 1em; */
+    padding: 1em;
+
 }
 
 .chirpFeed-chirp_content {
     display: flex;
     flex-direction: column-reverse;
-    border: 10px solid greenyellow;
+    /* border: 10px solid greenyellow; */
     box-sizing: border-box;
-    margin: 1em;
+    /* margin: 1em; */
     padding: 1em;
+    border: solid 2px#2F3336;
+
 }
 .chirpFeed-img {
     max-width: 400px;

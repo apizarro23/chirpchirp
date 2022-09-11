@@ -22,7 +22,9 @@
     display: flex;
     flex-direction: column;
     overflow: hidden scroll;
-    padding-top: 1em;
+    /* padding-top: 1em; */
+    border: solid 2px#2F3336;
+
 }
 
 .chirpDetails-middle-container::-webkit-scrollbar {
@@ -31,13 +33,4 @@
 
 .chirpDetails-right-container {
     display: flex;
-}
-
-
-.chirp-details-comments-container {
-    background-color: red;
-}
-
-.test01 {
-    background-color: red;
 }

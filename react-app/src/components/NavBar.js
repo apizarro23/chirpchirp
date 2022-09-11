@@ -8,9 +8,11 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
+          <button >
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
+          </button>
         </li>
         {/* <li>
           <NavLink to='/login' exact={true} activeClassName='active'>

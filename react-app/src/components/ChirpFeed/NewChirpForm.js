@@ -79,21 +79,21 @@ const NewChirpForm = () => {
                 ))}
             </div>
             <div>
-                <label htmlFor="chirp_content">Chirp Content</label>
+                <label htmlFor="chirp_content"></label>
                 <input
                     name="chirp_content"
                     type="text"
-                    placeholder="Chirp"
+                    placeholder="What's Happening"
                     value={chirp_content}
                     onChange={updateChirpContent}
                 />
             </div>
             <div>
-                <label htmlFor="imgUrl">Image URL</label>
+                <label htmlFor="imgUrl"></label>
                 <input
                     name="imgUrl"
                     type="text"
-                    placeholder="Add Image Here"
+                    placeholder="Add Image Here (Optional)"
                     value={image_url}
                     onChange={updateImgUrl}
                 />
