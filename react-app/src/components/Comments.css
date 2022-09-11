@@ -5,3 +5,9 @@
     padding: 1em;
     border: solid 2px#2F3336;
 }
+
+.list_comments {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: red;
+}

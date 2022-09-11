@@ -48,6 +48,8 @@ const Comments = () => {
       <div className="list-comments">
         {commentsByChirp.map((ele) => (
           <div className="single-comment">
+            { user && user?.id === ele?.user_id ? (
+              <>
             {`@${users[ele?.user_id - 1]?.username} said...`}
             <div className="comment-content">
               <div>{ele.comment_content}</div>
@@ -69,6 +71,15 @@ const Comments = () => {
                 {showDropdown && <DeleteCommentModal comment={ele} />}
               </div>
             </div>
+              </>
+            ):(
+              <>
+              <div className="comment-content">
+              {`@${users[ele?.user_id - 1]?.username} said...`}
+                <div>{ele.comment_content}</div>
+              </div>
+            </>
+            )}
           </div>
         ))}
       </div>

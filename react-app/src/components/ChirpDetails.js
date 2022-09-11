@@ -17,6 +17,7 @@ const ChirpDetails = () => {
     let { chirpId } = useParams()
     chirpId = Number(chirpId)
     const dispatch = useDispatch()
+    const user = useSelector(state => state?.session.user)
     const chirp = useSelector(state => state?.chirps[chirpId])
     const comments = useSelector(state => Object.values(state?.comments))
 
@@ -43,6 +44,8 @@ const ChirpDetails = () => {
             </div>
             <div className="chirpDetails-middle-container">
             <div key={chirp?.id} className="single-buzz">
+                {user && user?.id == chirp?.user_id ? (
+                <>
                 <div className="chirp-NavBar">
                     <div
                         className="chirps-name"
@@ -65,6 +68,15 @@ const ChirpDetails = () => {
                 {chirp?.chirp_content}
                 <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
+                </>
+                ):(
+                    <div>
+                    <div className="chirp-content">
+                      <div>{chirp?.chirp_content}</div>
+                      <img src={chirp?.image_url} className="single-buzz-img" alt="" />
+                    </div>
+                  </div>  
+                )}
                 <div className="comments-container">
                     <Comments/>
                 </div>
@@ -74,7 +86,6 @@ const ChirpDetails = () => {
             <div className="chirpDetails-right-container">
                 THIS IS THE RIGHT SIDE
             </div>
-
         </div>
     )
 }

@@ -47,6 +47,10 @@
 
 }
 .chirpFeed-img {
-    max-width: 400px;
-    max-height: 400px;
+  max-width: 450px;
+  max-height: 333px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 15px;
+  margin-left: 55px;
 }

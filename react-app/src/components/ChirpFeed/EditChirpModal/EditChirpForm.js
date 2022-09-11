@@ -10,8 +10,8 @@ const EditChirpForm = ({ chirp, onClick }) => {
     const user = useSelector(state => state.session.user)
     const [chirp_content, setChirp_Content] = useState(chirp?.chirp_content)
     const [image_url, setImage_Url] = useState(chirp?.image_url)
-    // const [showModal, setShowModal] = useState(false)
-    // const [showDropdown, setShowDropdown] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [showDropdown, setShowDropdown] = useState(false)
 
     // console.log('OVER HERE!@@@@@@@@',chirp)
 
@@ -25,13 +25,17 @@ const EditChirpForm = ({ chirp, onClick }) => {
         }
         await dispatch(editChirp(payload, chirp.id))
 
+        await dispatch(getChirps())
+        onClick()
+        setShowDropdown(false)
+
         // console.log('THIS IS THE PAYLOAD1', payload)
 
         // console.log('THIS IS THE RESPONSE2', response)
     
         // if (response) {
         //     await dispatch(getChirps())
-        //     setShowModal(false)
+        //     onClick()
         //     setShowDropdown(false)
         // }
     }

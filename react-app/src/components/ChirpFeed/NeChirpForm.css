@@ -3,3 +3,17 @@
     flex-direction: column;
     align-items: center;
 }
+
+.new-chirp-errors {
+    color: red;
+}
+
+.chirp-content-input {
+    background-color: #242D34;
+    border: solid 2px#2F3336;
+}
+
+.image-url-input {
+    background-color: #242D34;
+    border: solid 2px#2F3336;
+}

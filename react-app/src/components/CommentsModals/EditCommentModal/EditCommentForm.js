@@ -25,18 +25,20 @@ const EditCommentForm = ({ comment, onClick}) => {
             comment_content: comment_content,
             chirp_id: chirpId
         }
-        const response = await dispatch(editComment(payload))
+        await dispatch(editComment(payload))
+        onClick()
+        
 
         // console.log('THIS IS THE PAYLOAD1', payload)
 
         // console.log('THIS IS THE RESPONSE2', response)
     
-        if (response) {
-            await dispatch(getComments())
-            setShowModal(false)
-            setShowDropdown(false)
-            history.pushState(`chirps/${chirpId}`)
-        }
+        // if (response) {
+        //     await dispatch(getComments())
+        //     onClick(setShowModal(false))
+        //     setShowDropdown(false)
+        //     history.push(`/`)
+        // }
     }
 
     const updateCommentContent = (e) => {
