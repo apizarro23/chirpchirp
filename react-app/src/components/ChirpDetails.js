@@ -9,6 +9,8 @@ import Comments from "./Comments";
 import NewChirpForm from "./ChirpFeed/NewChirpForm";
 import "./ChirpDetails.css"
 import NavBar from "./NavBar";
+import linked from "./images/linked-in-logo.png"
+import git from "./images/github-logo.png"
 
 const ChirpDetails = () => {
     const [users, setUsers] = useState([]);
@@ -64,7 +66,9 @@ const ChirpDetails = () => {
                     </div>
                 </div>
                 <div className="chirp-content">
+                    <div className="chirp-wrap">
                 {chirp?.chirp_content}
+                    </div>
                 <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
                 </div>
@@ -83,8 +87,9 @@ const ChirpDetails = () => {
 
             </div>
             <div className="chirpDetails-right-container">
-                THIS IS THE RIGHT SIDE
-            </div>
+                <div className='bottom-name'>Meet Me: Antony Pizarro</div>
+                <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
+                <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>            </div>
         </div>
     )
 }

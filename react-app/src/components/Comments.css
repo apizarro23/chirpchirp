@@ -4,10 +4,24 @@
     box-sizing: border-box;
     padding: 1em;
     border: solid 2px#2F3336;
+    overflow-wrap: break-word;
 }
 
 .list_comments {
     display: flex;
     flex-direction: column;
     background-color: red;
+}
+
+.all-comment-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-username {
+    order: 0;
+}
+
+.comment-content {
+    order: 2;
 }

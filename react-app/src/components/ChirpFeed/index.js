@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar";
+import linked from "../images/linked-in-logo.png"
+import git from "../images/github-logo.png"
 
 import { Modal } from "../context/Modal";
 import NewChirpForm from "./NewChirpForm"
@@ -41,7 +43,7 @@ const ChirpFeed = () => {
             </div>
             <div className="chirpFeed-middle-container">
                 <div className="create-newchirp">
-                <div className="">Hi, {user.username}</div>
+                <div className="">Hi,{user.username}</div>
                 <div className="at-username">{`@${user.username}`}</div>
                 <div className="new-chirp-form">
                 <NewChirpForm/>
@@ -62,7 +64,9 @@ const ChirpFeed = () => {
                 ))}
             </div>
             <div className="chirpFeed-right-container">
-                THIS IS THE RIGHT SIDE
+                <div className='bottom-name'>Meet Me: Antony Pizarro</div>
+                <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
+                <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>
             </div>
         </div>
     )

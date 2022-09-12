@@ -36,10 +36,6 @@ const EditCommentForm = ({ comment, onClick}) => {
           return;
         }
     
-        if (comment_content.length < 4) {
-          setErrors(["Comment must be more than 4 characters!"]);
-          return;
-        }
 
         const payload = {
             id: comment?.id,
@@ -61,7 +57,7 @@ const EditCommentForm = ({ comment, onClick}) => {
     return (
         <div className="dropdown-container">
           <div className="edit-chirp-button" onClick={() => setShowModal(true)}>
-            <form onSubmit={handleSubmit} className="block">
+            <form onSubmit={handleSubmit} className="edit-comment-form">
             <div className="edit-comment-errors">
                 {errors.map((error, idx) => (
                 <div key={idx}>{error}</div>
@@ -84,7 +80,9 @@ const EditCommentForm = ({ comment, onClick}) => {
                 <button type="submit" className="edit-it-chirp-modal-submit-button">
                   Update Comment
                 </button>
+                <button>
                 <div className="delete-option cancel" onClick={onClick}>Cancel</div>
+                </button>
               </div>
             </form>
           </div>
