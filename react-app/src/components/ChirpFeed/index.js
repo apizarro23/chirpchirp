@@ -6,7 +6,6 @@ import NavBar from "../NavBar";
 import linked from "../images/linked-in-logo.png"
 import git from "../images/github-logo.png"
 
-import { Modal } from "../context/Modal";
 import NewChirpForm from "./NewChirpForm"
 
 import { getChirps} from "../../store/chirps"
@@ -31,9 +30,14 @@ const ChirpFeed = () => {
             const response = await fetch("/api/users/");
             const responseData = await response.json();
             setUsers(responseData.users);
+
+            console.log("THESE ARE THE USERS FOR THE FEED",responseData)
           }
           fetchData()
         }, [dispatch])
+
+    if (!chirps) return null;
+
         
 
     return (

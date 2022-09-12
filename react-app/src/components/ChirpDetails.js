@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChirps } from "../store/chirps";
-import { getComments, deleteComment } from "../store/comments";
+import { getComments } from "../store/comments";
 import EditChirpModal from "./ChirpFeed/EditChirpModal";
 import DeleteChirpModal from "./ChirpFeed/DeleteChirpModal";
 import Comments from "./Comments";
-import NewChirpForm from "./ChirpFeed/NewChirpForm";
+// import NewChirpForm from "./ChirpFeed/NewChirpForm";
 import "./ChirpDetails.css"
 import NavBar from "./NavBar";
 import linked from "./images/linked-in-logo.png"
 import git from "./images/github-logo.png"
 
 const ChirpDetails = () => {
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     let { chirpId } = useParams()
@@ -21,7 +21,7 @@ const ChirpDetails = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state?.session.user)
     const chirp = useSelector(state => state?.chirps[chirpId])
-    const comments = useSelector(state => Object.values(state?.comments))
+    // const comments = useSelector(state => Object.values(state?.comments))
 
     // console.log("LOOK HERE!!!!!!!!!!!!", )
 
@@ -37,7 +37,7 @@ const ChirpDetails = () => {
         
     }, [dispatch, chirpId])
 
-    console.log("THESE ARE THE USERS", users)
+    // console.log("THESE ARE THE USERS", users)
 
     return (
         <div className="chirpDetails-main-container">
