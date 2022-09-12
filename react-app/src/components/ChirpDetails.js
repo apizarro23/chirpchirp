@@ -43,8 +43,8 @@ const ChirpDetails = () => {
                 <NavBar/>
             </div>
             <div className="chirpDetails-middle-container">
-            <div key={chirp?.id} className="single-buzz">
-                {user && user?.id == chirp?.user_id ? (
+            <div key={chirp?.id} className="single-chirp">
+                {user && user?.id === chirp?.user_id ? (
                 <>
                 <div className="chirp-NavBar">
                     <div
@@ -73,7 +73,7 @@ const ChirpDetails = () => {
                     <div>
                     <div className="chirp-content">
                       <div>{chirp?.chirp_content}</div>
-                      <img src={chirp?.image_url} className="single-buzz-img" alt="" />
+                      <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                     </div>
                   </div>  
                 )}

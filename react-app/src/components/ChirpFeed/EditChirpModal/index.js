@@ -7,7 +7,7 @@ const EditChirpModal = ({ chirp }) => {
     
     return (
         <div>
-            <div className="edit-buzz-button" onClick={() => setShowModal(true)}>
+            <div className="edit-chirp-button" onClick={() => setShowModal(true)}>
                 Edit
             </div>
             {showModal && (

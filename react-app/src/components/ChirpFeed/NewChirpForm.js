@@ -12,38 +12,7 @@ const NewChirpForm = () => {
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
-    // const comments = useSelector((state) => Object.values(state?.comments))
-    // let { chirpId } = useParams()
-    // chirpId = Number(chirpId)
-    // const chirp = useSelector(state => state?.chirps[chirpId])
-    // const commentsByChirp = Object.values(comments).filter(
-    //     (comment) => comment?.chirp_id === chirpId)
 
-    // console.log("THIS IS THE CHIRPID IS!!!", )
-
-    // const createNewChirp = async (e) => {
-    //     e.preventDefault();
-
-    //     const data = await dispatch(createChirp(chirp_content, image_url))
-    //     if (data) {
-    //         setErrors(data)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     const newErrors = [];
-    //     if (chirp_content?.length > 280) {
-    //         newErrors.push("Character limit of 280 exceeded")
-    //     }
-    //     if (!chirp_content) {
-    //         newErrors.push("Content Required")
-    //     }
-    //     if (newErrors.length) {
-    //         setErrors(newErrors)
-    //     } else {
-    //         setErrors([]);
-    //     }
-    // }, [chirp_content, image_url])
 
     useEffect(() => {
         const errors = [];
@@ -71,7 +40,7 @@ const NewChirpForm = () => {
           }
       
           if (chirp_content.length > 280) {
-            setErrors(["Chirp length of 280 characters exceeded, current character count: 281"]);
+            setErrors(["Chirp length of 280 characters exceeded!"]);
             return;
           }
 
@@ -126,8 +95,8 @@ const NewChirpForm = () => {
                     value={image_url}
                     onChange={updateImgUrl}
                 />
-                <button type="submit">chirpchirp</button>
             </div>
+            <button type="submit">chirpchirp</button>
 
         </form>
     )

@@ -9,11 +9,15 @@
 }
 
 .chirp-content-input {
+    color: white;
     background-color: #242D34;
     border: solid 2px#2F3336;
+    width: 400px;
 }
 
 .image-url-input {
+    color: white;
     background-color: #242D34;
     border: solid 2px#2F3336;
+    width: 400px;
 }

@@ -41,7 +41,7 @@ const ChirpFeed = () => {
             </div>
             <div className="chirpFeed-middle-container">
                 <div className="create-newchirp">
-                <div className="">{user.username}</div>
+                <div className="">Hi, {user.username}</div>
                 <div className="at-username">{`@${user.username}`}</div>
                 <div className="new-chirp-form">
                 <NewChirpForm/>
