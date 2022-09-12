@@ -77,3 +77,8 @@
     max-width: 75px;
     max-height: 75px;
 }
+
+.sort {
+    display: flex;
+    flex-direction: column-reverse;
+}
