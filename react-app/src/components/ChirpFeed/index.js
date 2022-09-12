@@ -53,6 +53,7 @@ const ChirpFeed = () => {
                 <NewChirpForm/>
                 </div>
                 </div>
+                <div className="sort">
                 {chirps.map((ele) => (
                     <div className="chirpFeed-chirp_content" key={ele.id} id={ele.id}>
                         <div className="chirp-owner">
@@ -66,6 +67,8 @@ const ChirpFeed = () => {
                         </Link>
                     </div>
                 ))}
+
+                </div>
             </div>
             <div className="chirpFeed-right-container">
                 <div className='bottom-name'>Meet Me: Antony Pizarro</div>
