@@ -26,6 +26,10 @@
     display: none;
 }
 
+.new-chirp-form {
+    padding: 1em;
+}
+
 .create-newchirp {
     display: flex;
     flex-direction: column;
@@ -38,15 +42,23 @@
 
 .chirpFeed-chirp_content {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     /* border: 10px solid greenyellow; */
     box-sizing: border-box;
-    /* margin: 1em; */
     padding: 1em;
     border: solid 2px#2F3336;
 
 }
+
+.chirp-owner{
+    padding: 1em;
+}
+
 .chirpFeed-img {
-    max-width: 400px;
-    max-height: 400px;
+  max-width: 450px;
+  max-height: 333px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 15px;
+  margin-left: 55px;
 }

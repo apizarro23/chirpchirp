@@ -41,9 +41,11 @@ const ChirpFeed = () => {
             </div>
             <div className="chirpFeed-middle-container">
                 <div className="create-newchirp">
-                <div className="">{user.username}</div>
+                <div className="">Hi, {user.username}</div>
                 <div className="at-username">{`@${user.username}`}</div>
+                <div className="new-chirp-form">
                 <NewChirpForm/>
+                </div>
                 </div>
                 {chirps.map((ele) => (
                     <div className="chirpFeed-chirp_content" key={ele.id} id={ele.id}>
@@ -52,7 +54,9 @@ const ChirpFeed = () => {
                         </div>
                         <Link to={`chirps/${ele.id}`} key={ele.user_id} className="link-to-chirp" >
                         {ele.chirp_content} 
-                        <img className="chirpFeed-img" src={ele.image_url} alt=""/>
+                        <div>
+                        <img className="chirpFeed-img" src={ele?.image_url} alt=""/>
+                        </div>
                         </Link>
                     </div>
                 ))}

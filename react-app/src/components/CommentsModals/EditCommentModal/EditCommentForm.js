@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getComments, editComment } from "../../../store/comments";
+import "./EditCommentForm.css"
 
 const EditCommentForm = ({ comment, onClick}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [comment_content, setComment_Content] = useState(comment?.comment_content)
     const user = useSelector(state => state.session.user)
-    const chirp = useSelector(state => state?.buzz)
+    const chirp = useSelector(state => state?.chirp)
     let { chirpId } = useParams()
     chirpId = Number(chirpId)
+    const [errors, setErrors] = useState([]);
     const [showModal, setShowModal] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
 
@@ -19,24 +21,37 @@ const EditCommentForm = ({ comment, onClick}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!comment_content) {
+          setErrors(["Comment is required!"]);
+          return;
+        }
+    
+        if (comment_content && comment_content.trim().length === 0) {
+          setErrors(["Comment is required!"]);
+          return;
+        }
+    
+        if (comment_content.length > 280) {
+          setErrors(["Comment length of 280 characters exceeded!"]);
+          return;
+        }
+    
+        if (comment_content.length < 4) {
+          setErrors(["Comment must be more than 4 characters!"]);
+          return;
+        }
+
         const payload = {
             id: comment?.id,
             user_id: user.id,
             comment_content: comment_content,
             chirp_id: chirpId
         }
-        const response = await dispatch(editComment(payload))
-
+        await dispatch(editComment(payload))
+        onClick()
+        
         // console.log('THIS IS THE PAYLOAD1', payload)
 
-        // console.log('THIS IS THE RESPONSE2', response)
-    
-        if (response) {
-            await dispatch(getComments())
-            setShowModal(false)
-            setShowDropdown(false)
-            history.pushState(`chirps/${chirpId}`)
-        }
     }
 
     const updateCommentContent = (e) => {
@@ -47,6 +62,11 @@ const EditCommentForm = ({ comment, onClick}) => {
         <div className="dropdown-container">
           <div className="edit-chirp-button" onClick={() => setShowModal(true)}>
             <form onSubmit={handleSubmit} className="block">
+            <div className="edit-comment-errors">
+                {errors.map((error, idx) => (
+                <div key={idx}>{error}</div>
+                ))}
+            </div>
               <div>
                 <div className="edit-it-chirp-modal-content">
                   <label className="edit-it-chirp-modal-main-label">Edit Content</label>

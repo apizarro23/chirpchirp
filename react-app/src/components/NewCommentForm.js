@@ -13,23 +13,43 @@ const NewCommentForm = () => {
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const newErrors = [];
-        if (comment_content?.length > 280) {
-            newErrors.push("Character limit of 280 exceeded")
-        }
-        if (!comment_content) {
-            newErrors.push("Content Required")
-        }
-        if (newErrors.length) {
-            setErrors(newErrors)
-        } else {
-            setErrors([]);
-        }
-    }, [comment_content])
+    // useEffect(() => {
+    //     const newErrors = [];
+    //     if (comment_content?.length > 280) {
+    //         newErrors.push("Character limit of 280 exceeded")
+    //     }
+    //     if (!comment_content) {
+    //         newErrors.push("Content Required")
+    //     }
+    //     if (newErrors.length) {
+    //         setErrors(newErrors)
+    //     } else {
+    //         setErrors([]);
+    //     }
+    // }, [comment_content])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (!comment_content) {
+            setErrors(["Comment is required!"]);
+            return;
+          }
+      
+          if (comment_content && comment_content.trim().length === 0) {
+            setErrors(["Comment is required!"]);
+            return;
+          }
+      
+          if (comment_content.length > 280) {
+            setErrors(["Comment length of 280 characters exceeded!"]);
+            return;
+          }
+      
+          if (comment_content.length < 4) {
+            setErrors(["Comment must be more than 4 characters!"]);
+            return;
+          }
 
         const payload = {
             user_id: user.id,

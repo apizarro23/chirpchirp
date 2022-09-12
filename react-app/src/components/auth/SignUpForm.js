@@ -8,6 +8,9 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [profile_pic, setProfile_pic] = useState('');
+  const [bio, setBio] = useState('');
+
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -16,7 +19,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, profile_pic, bio));
       if (data) {
         setErrors(data)
       }
@@ -38,6 +41,14 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updateProfilePic = (e) => {
+    setProfile_pic(e.target.valur)
+  }
+
+  const updateBio = (e) => {
+    setBio(e.target.value)
+  }
 
   const goToLogin = (e) => {
     history.push("/login");
@@ -72,6 +83,24 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
+      {/* <div>
+        <label>Profile Pic</label>
+        <input
+          type='text'
+          name='profile_pic'
+          onChange={updateProfilePic}
+          value={profile_pic}
+        ></input>
+      </div>
+      <div>
+        <label>Bio</label>
+        <input
+          type='text'
+          name='bio'
+          onChange={updateBio}
+          value={bio}
+        ></input>
+      </div> */}
       <div>
         <label>Password</label>
         <input
