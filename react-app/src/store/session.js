@@ -107,7 +107,7 @@ export const demoLogin = () => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: "demo@aa.io",
+      email: "demo@demo.com",
       password: "password",
     }),
   });
