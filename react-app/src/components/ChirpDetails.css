@@ -34,3 +34,23 @@
 .chirpDetails-right-container {
     display: flex;
 }
+
+.single-chirp {
+    border: solid 2px#2F3336;
+    padding: 1em;
+}
+
+.chirp-options-button {
+    display: flex;
+    justify-content: center;
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.ServerPage-NavBar-buttons {
+    cursor: pointer;
+}
+
+.chirp-content {
+    font-size: 2.5em;
+}

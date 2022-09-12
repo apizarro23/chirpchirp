@@ -43,9 +43,9 @@ const ChirpDetails = () => {
                 <NavBar/>
             </div>
             <div className="chirpDetails-middle-container">
-            <div key={chirp?.id} className="single-chirp">
+            <div key={chirp?.id}>
                 {user && user?.id === chirp?.user_id ? (
-                <>
+                <div className="single-chirp">
                 <div className="chirp-NavBar">
                     <div
                         className="chirps-name"
@@ -54,21 +54,20 @@ const ChirpDetails = () => {
                         setEditActive(!editActive);
                         }}
                     >
-                    
                         <button className="chirp-options-button">
                         <i className="fa-solid fa-ellipsis fa-xl"></i>
                         </button>
                     </div>
-                    <div className="ServerPage-NavBar-buttons"></div>
+                    <div className="ServerPage-NavBar-buttons">
                     {showDropdown && <EditChirpModal chirp={chirp} id={chirp.id} />}
                     {showDropdown && <DeleteChirpModal chirp={chirp} />}
-
+                    </div>
                 </div>
-                <div>
+                <div className="chirp-content">
                 {chirp?.chirp_content}
                 <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
-                </>
+                </div>
                 ):(
                     <div>
                     <div className="chirp-content">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp, demoLogin } from '../../store/session';
+import "./SignUpForm.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -59,28 +60,32 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form onSubmit={onSignUp} className="signup-form">
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
+      <div className='username'>
+        {/* <label>User Name</label> */}
         <input
+        className='input-username'
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
+          placeholder="Username"
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        {/* <label>Email</label> */}
         <input
+          className='input-email'
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
+          placeholder="E-mail"
         ></input>
       </div>
       {/* <div>
@@ -102,22 +107,26 @@ const SignUpForm = () => {
         ></input>
       </div> */}
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
         <input
+          className='input-password'
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
+          placeholder="Password"
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
         <input
+          className='input-repeat-password'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder="Repeat Password"
         ></input>
       </div>
       <button type='submit'>Sign Up</button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState }  from "react";
 import { useSelector, useDispatch } from "react-redux"; 
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { createComment } from "../store/comments";
+import "./NewCommentForm.css"
 
 const NewCommentForm = () => {
     const [errors, setErrors] = useState([]);
@@ -13,20 +14,6 @@ const NewCommentForm = () => {
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     const newErrors = [];
-    //     if (comment_content?.length > 280) {
-    //         newErrors.push("Character limit of 280 exceeded")
-    //     }
-    //     if (!comment_content) {
-    //         newErrors.push("Content Required")
-    //     }
-    //     if (newErrors.length) {
-    //         setErrors(newErrors)
-    //     } else {
-    //         setErrors([]);
-    //     }
-    // }, [comment_content])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -71,17 +58,17 @@ const NewCommentForm = () => {
       return (
         <div className="new-comment-form">
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className="errors">
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
             </div>
-            <div>
-                <label htmlFor="comment_content">CREATE A COMMENT</label>
+            <div className="comment-form">
+                <label htmlFor="comment_content"></label>
                 <input
                     name="comment_content"
                     type="text"
-                    placeholder="Chirp"
+                    placeholder="Leave a Comment"
                     value={comment_content}
                     onChange={updateCommentContent}
                 />

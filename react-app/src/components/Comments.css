@@ -8,6 +8,6 @@
 
 .list_comments {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     background-color: red;
 }

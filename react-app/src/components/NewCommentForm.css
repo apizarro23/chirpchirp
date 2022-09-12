@@ -1,17 +1,8 @@
-input {
-    display: flex;
-    width: 100px;
-  }
-  
-  .errors {
+.errors {
     color: red;
-  }
-  
-  .input-username {
-    background-color: black;
-  }
+}
 
-  .signup-form input {
+.new-comment-form input {
     border: 1px solid rgba(255, 255, 255, 0.951);
     margin-bottom: 10px;
     border-radius: 3px;
@@ -21,4 +12,11 @@ input {
     border-radius: 30px;
     padding: 0px 10px;
     box-sizing: border-box;
-  }
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    align-items: center;
+}
