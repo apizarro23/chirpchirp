@@ -19,8 +19,8 @@
 }
 
 .chirpDetails-middle-container {
-    min-width: 650px;
-    max-width: 650px;
+    min-width: 750px;
+    max-width: 750px;
     display: flex;
     flex-direction: column;
     overflow: hidden scroll;

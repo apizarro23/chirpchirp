@@ -1,6 +1,6 @@
-import React, { useEffect, useState }  from "react";
+import React, { useState }  from "react";
 import { useSelector, useDispatch } from "react-redux"; 
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { createComment } from "../store/comments";
 import "./NewCommentForm.css"
 
@@ -33,10 +33,6 @@ const NewCommentForm = () => {
             return;
           }
       
-          if (comment_content.length < 4) {
-            setErrors(["Comment must be more than 4 characters!"]);
-            return;
-          }
 
         const payload = {
             user_id: user.id,
