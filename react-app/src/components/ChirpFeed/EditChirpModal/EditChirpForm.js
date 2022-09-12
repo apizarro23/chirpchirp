@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getChirps, editChirp } from "../../../store/chirps";
+import "./EditChirpForm.css"
 
 const EditChirpForm = ({ chirp, onClick }) => {
     // const chirp = useSelector(state => state.chirps)
@@ -51,6 +52,7 @@ const EditChirpForm = ({ chirp, onClick }) => {
               return;
           }
 
+
         const payload = {
             user_id: user.id,
             chirp_content,
@@ -84,14 +86,14 @@ const EditChirpForm = ({ chirp, onClick }) => {
     return (
         <div className="dropdown-container">
                     <div className="edit-chirp-modal-container">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="inputs">
                         <div className="edit-comment-errors">
                             {errors.map((error, idx) => (
                             <div key={idx}>{error}</div>
                             ))}
                         </div>
                             <label className="edit-chirp-modal-main-label">EDIT</label>
-                            <label className="edit-chirp-modal-chirp-content-label">CHIRP CONTENT</label>
+                            {/* <label className="edit-chirp-modal-chirp-content-label">CHIRP CONTENT</label> */}
                             <div>
                                 <input
                                     name="name"
@@ -100,7 +102,7 @@ const EditChirpForm = ({ chirp, onClick }) => {
                                     onChange={updateChirpContent}
                                 />
                             </div>
-                            <label className="edit-chirp-modal-image-url-label">EDIT IMAGE</label>
+                            <label className="edit-chirp-modal-image-url-label">EDIT IMAGE URL (OPTIONAL)</label>
                             <div className="edit-chirp-modal-input-image-outer">
                                 <input
                                 name="server_pic"
@@ -111,7 +113,15 @@ const EditChirpForm = ({ chirp, onClick }) => {
                                 />
                             </div>
                             <div className="edit-chirp-buttons-container">
+                            <button
+                                    type="submit"
+                                    className="edit-chirp-modal-submit-button"
+                                >
+                                    SAVE CHIRP CHANGES
+                            </button>
+                            <button>
                             <div className='give-me-a-border cancel' onClick={onClick}>Cancel</div>
+                            </button>
                                 {/* <button onClick={() => {
                                     setShowModal(false)
                                     setShowDropdown(false)
@@ -120,12 +130,7 @@ const EditChirpForm = ({ chirp, onClick }) => {
                                 >
                                     CANCEL
                                 </button> */}
-                                <button
-                                    type="submit"
-                                    className="edit-chirp-modal-submit-button"
-                                >
-                                    SAVE CHIRP CHANGES
-                                </button>
+
                             </div>
                         </form>
                     </div>

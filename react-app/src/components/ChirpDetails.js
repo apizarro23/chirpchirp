@@ -9,6 +9,8 @@ import Comments from "./Comments";
 import NewChirpForm from "./ChirpFeed/NewChirpForm";
 import "./ChirpDetails.css"
 import NavBar from "./NavBar";
+import linked from "./images/linked-in-logo.png"
+import git from "./images/github-logo.png"
 
 const ChirpDetails = () => {
     const [users, setUsers] = useState([]);
@@ -43,9 +45,9 @@ const ChirpDetails = () => {
                 <NavBar/>
             </div>
             <div className="chirpDetails-middle-container">
-            <div key={chirp?.id} className="single-chirp">
+            <div key={chirp?.id}>
                 {user && user?.id === chirp?.user_id ? (
-                <>
+                <div className="single-chirp">
                 <div className="chirp-NavBar">
                     <div
                         className="chirps-name"
@@ -54,21 +56,22 @@ const ChirpDetails = () => {
                         setEditActive(!editActive);
                         }}
                     >
-                    
                         <button className="chirp-options-button">
                         <i className="fa-solid fa-ellipsis fa-xl"></i>
                         </button>
                     </div>
-                    <div className="ServerPage-NavBar-buttons"></div>
+                    <div className="ServerPage-NavBar-buttons">
                     {showDropdown && <EditChirpModal chirp={chirp} id={chirp.id} />}
                     {showDropdown && <DeleteChirpModal chirp={chirp} />}
-
+                    </div>
                 </div>
-                <div>
+                <div className="chirp-content">
+                    <div className="chirp-wrap">
                 {chirp?.chirp_content}
+                    </div>
                 <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                 </div>
-                </>
+                </div>
                 ):(
                     <div>
                     <div className="chirp-content">
@@ -84,8 +87,9 @@ const ChirpDetails = () => {
 
             </div>
             <div className="chirpDetails-right-container">
-                THIS IS THE RIGHT SIDE
-            </div>
+                <div className='bottom-name'>Meet Me: Antony Pizarro</div>
+                <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
+                <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>            </div>
         </div>
     )
 }

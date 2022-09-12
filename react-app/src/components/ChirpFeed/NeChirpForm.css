@@ -3,20 +3,31 @@
     flex-direction: column;
     align-items: center;
 }
+ .newchirpform input {
+    border: 1px solid rgba(255, 255, 255, 0.951);
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.951);
+    width: 300px;
+    height: 36px;
+    border-radius: 30px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+ }
 
 .new-chirp-errors {
     color: red;
 }
 
 .chirp-content-input {
-    color: white;
+    /* color: white; */
     background-color: #242D34;
     border: solid 2px#2F3336;
     width: 400px;
 }
 
 .image-url-input {
-    color: white;
+    /* color: white; */
     background-color: #242D34;
     border: solid 2px#2F3336;
     width: 400px;

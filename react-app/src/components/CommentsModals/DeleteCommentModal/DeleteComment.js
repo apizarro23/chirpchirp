@@ -25,8 +25,12 @@ function DeleteComment({comment, onClick}) {
                 <h3>DELETE Comment?</h3>
                 <div> Are you sure you want to delete this comment?</div>
             </div>
+            <button>
             <div className="delete-comment-button" onClick={onDelete}>Delete</div>
+            </button>
+            <button>
             <div className="cancel-delete-comment-button" onClick={onClick}>Cancel</div>
+            </button>
         </div>
     )
         

@@ -29,8 +29,12 @@ function DeleteChirp({chirp, onClick}) {
                 <h3>DELETE CHIRP?</h3>
                 <div> Are you sure you want to delete this chirp?</div>
             </div>
+            <button>
             <div className="delete-chirp-button" onClick={onDelete}>Delete</div>
+            </button>
+            <button>
             <div className="cancel-delete-chirp-button" onClick={onClick}>Cancel</div>
+            </button>
         </div>
     )
         

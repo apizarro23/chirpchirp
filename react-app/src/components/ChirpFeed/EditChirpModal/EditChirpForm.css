@@ -1,0 +1,23 @@
+.inputs input {
+    border: 1px solid rgba(255, 255, 255, 0.951);
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.951);
+    width: 300px;
+    height: 36px;
+    border-radius: 30px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+.edit-chirp-modal-chirp-content-input {
+    border: 1px solid rgba(255, 255, 255, 0.951);
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.951);
+    width: 300px;
+    height: 36px;
+    border-radius: 30px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
