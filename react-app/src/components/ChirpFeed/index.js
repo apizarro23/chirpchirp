@@ -56,7 +56,7 @@ const ChirpFeed = () => {
                 {chirps.map((ele) => (
                     <div className="chirpFeed-chirp_content" key={ele.id} id={ele.id}>
                         <div className="chirp-owner">
-                        {`@${users[ele?.user_id - 1]?.username}`}
+                        {`@${users[ele?.user_id]?.username}`}
                         </div>
                         <Link to={`chirps/${ele.id}`} key={ele.user_id} className="link-to-chirp" >
                         {ele.chirp_content} 
