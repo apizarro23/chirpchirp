@@ -44,11 +44,6 @@ const NewChirpForm = () => {
             return;
           }
 
-          if (chirp_content.length < 4) {
-            setErrors(["Comment must be more than 4 characters!"]);
-            return;
-          }
-
         const payload = {
             user_id: user.id,
             chirp_content: chirp_content,
