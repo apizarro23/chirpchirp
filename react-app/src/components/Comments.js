@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getComments } from "../store/comments";
 import NewCommentForm from "./NewCommentForm";
 import DeleteCommentModal from "./CommentsModals/DeleteCommentModal";
@@ -11,13 +11,11 @@ const Comments = () => {
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [users, setUsers] = useState([]);
-    const history = useHistory();
     const user = useSelector(state => state?.session?.user)
     const dispatch = useDispatch()
     const comments = useSelector((state) => Object.values(state?.comments))
     let { chirpId } = useParams()
     chirpId = Number(chirpId)
-    const chirp = useSelector((state) => state?.chirps[chirpId])
     const commentsByChirp = Object.values(comments).filter(
         (comment) => comment?.chirp_id === chirpId)
 
@@ -34,6 +32,8 @@ const Comments = () => {
           const response = await fetch("/api/users/");
           const responseData = await response.json();
           setUsers(responseData.users);
+
+          console.log("THESE ARE THE USERS FOR THE COMMENTS",responseData)
         }
         fetchData()
         }, [chirpId, dispatch])
