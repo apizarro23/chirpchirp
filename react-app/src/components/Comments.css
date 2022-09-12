@@ -25,3 +25,7 @@
 .comment-content {
     order: 2;
 }
+
+.options-buttons {
+    cursor: pointer;
+}
