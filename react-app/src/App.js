@@ -33,7 +33,6 @@ function App() {
       <Switch>
         <Route path='/login' exact={true}>
           <SplashPage/>
-        <h1> THIS IS THE LOGIN</h1>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
