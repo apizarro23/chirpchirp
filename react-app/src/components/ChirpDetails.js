@@ -45,7 +45,7 @@ const ChirpDetails = () => {
                 <NavBar/>
             </div>
             <div className="chirpDetails-middle-container">
-            <div key={chirp?.id}>
+            <div className="test" key={chirp?.id}>
                 {user && user?.id === chirp?.user_id ? (
                 <div className="single-chirp">
                 <div className="chirp-NavBar">

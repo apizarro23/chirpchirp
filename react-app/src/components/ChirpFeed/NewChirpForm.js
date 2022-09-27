@@ -14,21 +14,31 @@ const NewChirpForm = () => {
     const dispatch = useDispatch();
 
 
-    useEffect(() => {
-        const errors = [];
+    // useEffect(() => {
+    //     const errors = [];
+    //     const imgRegex = new RegExp(
+    //       /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+    //     );
+    //     if (image_url && !imgRegex.test(image_url)) {
+    //       errors.push(
+    //         "Invalid Image Url! URL must contain a .png, .jpg, .jpeg, .gif, .png or .svg!"
+    //       );
+    //     }
+    //     setErrors(errors);
+    //   }, [image_url]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
         const imgRegex = new RegExp(
           /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
         );
         if (image_url && !imgRegex.test(image_url)) {
-          errors.push(
-            "Invalid Image Url! URL must contain a .png, .jpg, .jpeg, .gif, .png or .svg!"
-          );
+          setErrors([
+            "Invalid Image Url! URL must contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
+          ]);
+          return;
         }
-        setErrors(errors);
-      }, [image_url]);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
 
         if (!chirp_content) {
             setErrors(["Chirp is required!"]);
@@ -53,6 +63,7 @@ const NewChirpForm = () => {
 
         const res = await dispatch(createChirp(payload))
         if (res) {
+            setChirp_Content()
             history.push('/')
             // dispatch(getComments(comments))
         }
