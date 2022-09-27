@@ -1,0 +1,19 @@
+/* CSS GOES HERE */
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin: 1em;
+    border-radius: 10px;
+    height: 4em;
+    width: 4em;
+}
+
+.logo-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
