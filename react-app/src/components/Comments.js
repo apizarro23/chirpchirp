@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom"
 import { getComments } from "../store/comments";
+import { Modal } from "./context/Modal";
 import NewCommentForm from "./NewCommentForm";
 import DeleteCommentModal from "./CommentsModals/DeleteCommentModal";
 import EditCommentModal from "./CommentsModals/EditCommentModal";
 import "./Comments.css"
 
 const Comments = () => {
+    const [showModal, setShowModal] = useState(false)
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [users, setUsers] = useState([]);
@@ -52,7 +54,14 @@ const Comments = () => {
               <div className="all-comment-content">
             {`@${users[ele?.user_id - 2]?.username} said...`}
             <div className="comment-content">
-              <div>{ele.comment_content}</div>
+              <div className="content">{ele.comment_content}
+                <div className="comment-modals">
+                    <EditCommentModal comment={ele} />
+                    <DeleteCommentModal comment={ele} />
+                </div>
+                {/* <div className="options-buttons">
+                </div> */}
+              </div>
             </div>
             <div className="comment-options">
               <div
@@ -62,14 +71,15 @@ const Comments = () => {
                   setEditActive(!editActive);
                 }}
               >
-                <button className="chirp-options-button">
+                {/* <button className="chirp-options-button">
                   <i className="fa-solid fa-ellipsis fa-xl"></i>
-                </button>
+                </button> */}
               </div>
-              <div className="options-buttons">
+              {/* <div className="options-buttons" onClick={() => setShowModal(true)}>
                 {showDropdown && <EditCommentModal comment={ele} />}
                 {showDropdown && <DeleteCommentModal comment={ele} />}
-              </div>
+              </div> */}
+
             </div>
               </div>
             ):(

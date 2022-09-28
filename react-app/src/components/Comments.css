@@ -5,11 +5,12 @@
     padding: 1em;
     border: solid 2px#2F3336;
     overflow-wrap: break-word;
+    max-width: 750px;
 }
 
 .list_comments {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-color: red;
 }
 
@@ -26,19 +27,47 @@
     order: 2;
 }
 
-.options-buttons {
+.content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 718px;
+
+}
+
+.comment-modals {
+    display: flex;
+    flex-direction: row;
+}
+
+.options-buttons {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     color: black;
     cursor: pointer;
-    max-width: 75px;
     background-color: #81D4EF;
     border-radius: 10px;
-    /* margin: 1em; */
-    /* border: 1em; */
+
 }
 
 .Chirps-name {
     max-width: fit-content;
+}
+
+.edit-modal-button {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+}
+
+.delete-modal-button {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
 }

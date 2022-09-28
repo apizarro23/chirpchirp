@@ -72,8 +72,14 @@ const ChirpFeed = () => {
             </div>
             <div className="chirpFeed-right-container">
                 <div className='bottom-name'>Meet Me: Antony Pizarro</div>
-                <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
-                <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>
+                <div className='HomePage-LinkedIn'>
+                    <img alt='social icon' className='HomePage-logos' src={linked} />
+                        <a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a>
+                </div>
+                <div className='HomePage-GitHub'>
+                    <img alt='social icon' className='HomePage-logos' src={git} />
+                        <a href='https://github.com/apizarro23'>GitHub</a>
+                </div>
             </div>
         </div>
     )
