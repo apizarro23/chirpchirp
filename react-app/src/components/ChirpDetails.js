@@ -11,6 +11,7 @@ import "./ChirpDetails.css"
 import NavBar from "./NavBar";
 import linked from "./images/linked-in-logo.png"
 import git from "./images/github-logo.png"
+import defaultImage from "./images/icons8-bird-96.png"
 
 const ChirpDetails = () => {
     // const [users, setUsers] = useState([]);
@@ -69,15 +70,22 @@ const ChirpDetails = () => {
                     <div className="chirp-wrap">
                 {chirp?.chirp_content}
                     </div>
-                <img src={chirp?.image_url} className="single-chirp-img" alt="" />
+                <img src={chirp?.image_url} className="single-chirp-img" alt="" onError={ e => {
+                            if (chirp.image_url) {
+                                e.currentTarget.src = defaultImage
+                            }
+                        }} />
                 </div>
                 </div>
                 ):(
                     <div>
                     <div className="chirp-content">
                       <div>{chirp?.chirp_content}</div>
-                      <img src={chirp?.image_url} className="single-chirp-img" alt="" />
-                    </div>
+                      <img src={chirp?.image_url} className="single-chirp-img" alt="" onError={ e => {
+                            if (chirp.image_url) {
+                                e.currentTarget.src = defaultImage
+                            }
+                        }} />                    </div>
                   </div>  
                 )}
                 <div className="comments-container">

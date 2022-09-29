@@ -11,6 +11,8 @@ import NewChirpForm from "./NewChirpForm"
 import { getChirps} from "../../store/chirps"
 import "./ChirpFeed.css"
 
+import defaultImage from "../images/icons8-bird-96.png"
+
 
 
 const ChirpFeed = () => {
@@ -62,7 +64,11 @@ const ChirpFeed = () => {
                         <Link to={`chirps/${ele.id}`} key={ele.user_id} className="link-to-chirp" >
                         {ele.chirp_content} 
                         <div>
-                        <img className="chirpFeed-img" src={ele?.image_url} alt=""/>
+                        <img className="chirpFeed-img" src={ele?.image_url} alt="" onError={ e => {
+                            if (ele.image_url) {
+                                e.currentTarget.src = defaultImage
+                            }
+                        }} />
                         </div>
                         </Link>
                     </div>
