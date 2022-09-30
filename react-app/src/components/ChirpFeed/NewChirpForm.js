@@ -63,7 +63,8 @@ const NewChirpForm = () => {
 
         const res = await dispatch(createChirp(payload))
         if (res) {
-            setChirp_Content()
+            setChirp_Content("")
+            setImg_Url("")
             history.push('/')
             // dispatch(getComments(comments))
         }
@@ -107,6 +108,9 @@ const NewChirpForm = () => {
                     onChange={updateImgUrl}
                 />
             </div>
+            {/* <div>
+                <input type="submit" value="chirpchirp" onClick="submitForm()" />
+            </div> */}
             <button type="submit">chirpchirp</button>
 
         </form>
