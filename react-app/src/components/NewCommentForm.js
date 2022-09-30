@@ -44,7 +44,8 @@ const NewCommentForm = () => {
         const res = await dispatch(createComment(payload))
         if (res) {
             // history.push("/")
-            history.push(`/chirps/${chirpId}`)
+            setComment_Content("")
+            // history.push(`/chirps/${chirpId}`)
         }
     }
 
