@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import NavBar from "../NavBar";
 import linked from "../images/linked-in-logo.png"
 import git from "../images/github-logo.png"
@@ -59,7 +59,8 @@ const ChirpFeed = () => {
                 {chirps.map((ele) => (
                     <div className="chirpFeed-chirp_content" key={ele.id} id={ele.id}>
                         <div className="chirp-owner">
-                        {`@${users[ele?.user_id - 2]?.username}`}
+                            <NavLink to={`/users/${ele.user_id}`}>{`@${users[ele?.user_id - 2]?.username}`}</NavLink>
+                        {/* {`@${users[ele?.user_id - 2]?.username}`} */}
                         </div>
                         <Link to={`chirps/${ele.id}`} key={ele.user_id} className="link-to-chirp" >
                         {ele.chirp_content} 

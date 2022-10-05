@@ -2,6 +2,7 @@ const GET_CHIRPS = 'chirps/GET_CHIRPS'
 const CREATE_CHIRP = 'chirps/CREATE_CHIRP'
 const EDIT_CHIRP = 'chirps/EDIT_CHIRP'
 const DELETE_CHIRP = 'chirps/DELETE_CHIRP'
+const GET_USER_CHIRPS = 'chirpls/GET_USER_CHIRPS'
 
 
 // ***ACTIONS***
@@ -23,6 +24,11 @@ const editChirpAction = (chirp) => ({
 const deleteChirpAction = (chirpId) => ({
     type: DELETE_CHIRP,
     chirpId
+})
+const getUserChirpsAction = (chirps, userId) => ({
+    type:GET_USER_CHIRPS,
+    chirps,
+    userId
 })
 
 
@@ -95,6 +101,18 @@ export const deleteChirp = (id) => async (dispatch) => {
 }
 
 
+// get all comments from a chirpId
+export const getUserChirps = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/chirps/${userId}/comments`)
+
+    if(response.ok) {
+        const userChirps = await response.json()
+        dispatch(getUserChirpsAction(userChirps, userId))
+        return userChirps
+    }
+}
+
+
 // ***REDUCER***
 const chirpReducer = (state = {}, action) => {
     let newState = {}
@@ -117,6 +135,11 @@ const chirpReducer = (state = {}, action) => {
         case DELETE_CHIRP: {
             newState = {...state}
             delete newState[action.chirpId]
+            return newState
+        }
+        case GET_USER_CHIRPS: {
+            newState = {...state}
+            for(let chirp of action.chirps) newState[chirp.id] = chirp
             return newState
         }
         default:
