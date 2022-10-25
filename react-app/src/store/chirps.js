@@ -69,7 +69,7 @@ export const createChirp = (chirpData) => async (dispatch) => {
 //edit a chirp
 export const editChirp = (payload, chirpId) => async (dispatch) => {
     // const {id, chirp_content, image_url} = chirpData
-    console.log("THIS IS THE CHIRPID", chirpId)
+    // console.log("THIS IS THE CHIRPID", chirpId)
     const response = await fetch(`/api/chirps/${chirpId}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -101,9 +101,9 @@ export const deleteChirp = (id) => async (dispatch) => {
 }
 
 
-// get all comments from a chirpId
+// get all chirps from a chirpId
 export const getUserChirps = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/chirps/${userId}/comments`)
+    const response = await fetch(`/api/chirps/users/${userId}`)
 
     if(response.ok) {
         const userChirps = await response.json()

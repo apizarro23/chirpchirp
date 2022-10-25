@@ -16,7 +16,7 @@ const EditCommentForm = ({ comment, onClick}) => {
     const [showModal, setShowModal] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
 
-    console.log('OVER HERE!@@@@@@@@',chirpId)
+    // console.log('OVER HERE!@@@@@@@@',chirpId)
 
     const handleSubmit = async (e) => {
         e.preventDefault()

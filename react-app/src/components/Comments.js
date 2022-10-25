@@ -35,7 +35,7 @@ const Comments = () => {
           const responseData = await response.json();
           setUsers(responseData.users);
 
-          console.log("THESE ARE THE USERS FOR THE COMMENTS",responseData)
+          // console.log("THESE ARE THE USERS FOR THE COMMENTS",responseData)
         }
         fetchData()
         }, [chirpId, dispatch])

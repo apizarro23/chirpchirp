@@ -33,7 +33,7 @@ const ChirpFeed = () => {
             const responseData = await response.json();
             setUsers(responseData.users);
 
-            console.log("THESE ARE THE USERS FOR THE FEED",responseData)
+            // console.log("THESE ARE THE USERS FOR THE FEED",responseData)
           }
           fetchData()
         }, [dispatch])

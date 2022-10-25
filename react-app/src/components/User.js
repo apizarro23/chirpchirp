@@ -16,12 +16,19 @@ function User() {
   const dispatch = useDispatch()
   const chirps = useSelector((state) => Object.values(state?.chirps))
 
+  // console.log("THIS IS THE CHIRPS!!!!!!!!!!!", chirps)
+
+  
   const userChirps = chirps.filter(function(chirp) {
-    return chirp.user_id == userId
+    return (chirp.user_id == userId)
   })
+  
+  // console.log("THIS IS THE USER CHIRPS!!!!!!!!!!!", userChirps)
 
   useEffect(() => {
     dispatch(getChirps()); // dispatch getBuzzes thunk which calls getBuzzes action
+
+
 
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -69,7 +76,7 @@ function User() {
           {userChirps.map((ele) => (
             <>
               <div className='user-chirps'>
-                <Link to={`chirps/${ele.id}`} key={ele.id} className='link-to-chirp'>
+                <Link to={`/chirps/${ele.id}`} key={ele.id} className='link-to-chirp'>
                   <div className="user-container">
                         <img
                           src={users[ele?.user_id - 1]?.profile_pic}

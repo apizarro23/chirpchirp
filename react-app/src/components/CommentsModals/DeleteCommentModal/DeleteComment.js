@@ -7,10 +7,10 @@ function DeleteComment({comment, onClick}) {
     let dispatch = useDispatch()
     let history = useHistory()
 
-    console.log("ONDELETE DISPATCH", dispatch)
+    // console.log("ONDELETE DISPATCH", dispatch)
 
     const onDelete = () => {
-        console.log("LOOK HERE!!!!!!!!!!!!!",comment)
+        // console.log("LOOK HERE!!!!!!!!!!!!!",comment)
 
         dispatch(deleteComment(comment.id))
         history.push("/")
