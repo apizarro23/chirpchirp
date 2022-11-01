@@ -27,6 +27,18 @@ def chirp_by_id(chirp_id):
   return jsonify(chirp.to_dict())
 
 
+@chirp_routes.route("/user/<int:user_id>", methods=["GET"])
+# @login_required
+# get chirp by user_id
+def chirp_by_user_id(user_id):
+    chirps = Chirp.query.filter(Chirp.user_id == user_id).all()
+
+    # chirps = [chirp.to_dict() for chirp in Chirp.query.get(user_id)]
+    response = [chirp.to_dict() for chirp in chirps]
+    res = {"chirps": response}
+    return res
+
+
 @chirp_routes.route("/", methods=["POST"])
 # @login_required
 # create a chirp
