@@ -28,6 +28,10 @@
 
 }
 
+.profile-middle-container::-webkit-scrollbar {
+    display: none;
+}
+
 .user-info {
     display: flex;
     flex-direction: column;
@@ -37,4 +41,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.profile-right-container img {
+    max-width: 75px;
+    max-height: 75px;
 }
