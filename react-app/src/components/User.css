@@ -37,6 +37,18 @@
     flex-direction: column;
 }
 
+.chirp-profile-pic {
+    height: 100px;
+    width: 100px;
+    border-radius: 30px;
+}
+
+.profile-pic {
+    height: 100px;
+    width: 100px;
+    border-radius: 30px;
+}
+
 .profile-right-container {
     display: flex;
     flex-direction: column;

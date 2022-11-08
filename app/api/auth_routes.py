@@ -83,3 +83,37 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@auth_routes.route('/edituser/<id>', methods=['PUT'])
+def edituser(id):
+    user = User.query.get(id)
+
+    if not user:
+        return "Error 404: This User does not exist"
+    
+    updated_user = SignUpForm()
+
+    updated_user["csrf_token"].data = request.cookies["csrf_token"]
+    if updated_user.validate_on_submit():
+        username = updated_user.data['username']
+        profile_pic = updated_user.data['profile_pic']
+        bio = updated_user.data['bio']
+        email = updated_user.data['email']
+        password = updated_user.data['password']
+
+        user.username = username
+        user.profile_pic = profile_pic
+        user.bio = bio
+        user.email = email
+        user.password = password
+
+        db.session.commit()
+        return user.to_dict()
+    return {'errors':validation_errors_to_error_messages(updated_user.errors)}, 401
+    
+
+@auth_routes.route('/allusers', methods=['GET'])
+def allusers():
+    users = [user.to_dict() for user in User.query.all()]
+    return jsonify(users)

@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import "./User.css"
 import linked from "./images/linked-in-logo.png"
 import git from "./images/github-logo.png"
+import defaultImage from "./images/icons8-bird-96.png"
 
 import { getChirps } from "../store/chirps"
 
@@ -60,10 +61,9 @@ function User() {
         <NavBar/>
       </div>
       <div className='profile-middle-container'>
-        <strong>
-          {user.profile_pic}
-        </strong>
+
         <stong>
+          <img src={user.profile_pic} alt="main-pp" className='profile-pic' onError={e => e.currentTarget.src = defaultImage}/>
           {user.username}
         </stong>
         {/* <strong>
@@ -78,11 +78,11 @@ function User() {
               <div className='user-chirps'>
                 <Link to={`/chirps/${ele.id}`} key={ele.id} className='link-to-chirp'>
                   <div className="user-container">
-                        <img
+                        {/* <img
                           src={users[ele?.user_id - 1]?.profile_pic}
                           alt=""
                           className="chirp-profile-pic"
-                        />
+                        /> */}
                         {`@${users[ele?.user_id - 1]?.username}`}
                   </div>
                   <div className="buzz-content">{ele.chirp_content}</div>

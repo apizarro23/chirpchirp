@@ -2,7 +2,7 @@ const GET_CHIRPS = 'chirps/GET_CHIRPS'
 const CREATE_CHIRP = 'chirps/CREATE_CHIRP'
 const EDIT_CHIRP = 'chirps/EDIT_CHIRP'
 const DELETE_CHIRP = 'chirps/DELETE_CHIRP'
-const GET_USER_CHIRPS = 'chirpls/GET_USER_CHIRPS'
+const GET_USER_CHIRPS = 'chirps/GET_USER_CHIRPS'
 
 
 // ***ACTIONS***

@@ -58,6 +58,18 @@
     padding: 1em;
 }
 
+.chirp-owner img{
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
+
+.user-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
+
 .chirpFeed-img {
   max-width: 450px;
   max-height: 333px;
