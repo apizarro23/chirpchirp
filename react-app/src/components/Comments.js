@@ -52,7 +52,7 @@ const Comments = () => {
           <div className="single-comment">
             { user && user?.id === ele?.user_id ? (
               <div className="all-comment-content">
-            {`@${users[ele?.user_id - 2]?.username} said...`}
+            {`@${users[ele?.user_id - 1]?.username} said...`}
             <div className="comment-content">
               <div className="content">
                 <div className="comment-modals">
@@ -89,7 +89,7 @@ const Comments = () => {
               <>
               <div className="all-comment-content">
                 <div className="comment-username">
-              {`@${users[ele?.user_id - 2]?.username} said...`}
+              {`@${users[ele?.user_id - 1]?.username} said...`}
                 </div>
                 <div className="comment-content">{ele.comment_content}</div>
               </div>

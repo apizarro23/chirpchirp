@@ -67,11 +67,11 @@ const ChirpFeed = () => {
                         <div className="chirp-owner">
                             <NavLink to={`/users/${ele.user_id}`}>
                                 <img 
-                                src={`${users[ele?.user_id - 2]?.profile_pic}`}
+                                src={`${users[ele?.user_id - 1]?.profile_pic}`}
                                 alt=""
                                 onError={e => e.currentTarget.src = defaultImage}
                                 />
-                                {`@${users[ele?.user_id - 2]?.username}`}
+                                {`@${users[ele?.user_id - 1]?.username}`}
                             </NavLink>
                         {/* {`@${users[ele?.user_id - 2]?.username}`} */}
                         </div>
