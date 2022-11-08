@@ -49,8 +49,14 @@ const ChirpFeed = () => {
             </div>
             <div className="chirpFeed-middle-container">
                 <div className="create-newchirp">
-                <div className="">Hi,{user.username}</div>
-                <div className="at-username">{`@${user.username}`}</div>
+                    <img className="user-pic" src={user.profile_pic} alt="main-pp" onError={ e => e.currentTarget.src = defaultImage}/>
+                <div className="user">
+                    Hi,{user.username}
+                </div>
+                <div className="at-username">
+                    {`@${user.username}`}
+                
+                </div>
                 <div className="new-chirp-form">
                 <NewChirpForm/>
                 </div>
@@ -59,7 +65,14 @@ const ChirpFeed = () => {
                 {chirps.map((ele) => (
                     <div className="chirpFeed-chirp_content" key={ele.id} id={ele.id}>
                         <div className="chirp-owner">
-                            <NavLink to={`/users/${ele.user_id}`}>{`@${users[ele?.user_id - 2]?.username}`}</NavLink>
+                            <NavLink to={`/users/${ele.user_id}`}>
+                                <img 
+                                src={`${users[ele?.user_id - 2]?.profile_pic}`}
+                                alt=""
+                                onError={e => e.currentTarget.src = defaultImage}
+                                />
+                                {`@${users[ele?.user_id - 2]?.username}`}
+                            </NavLink>
                         {/* {`@${users[ele?.user_id - 2]?.username}`} */}
                         </div>
                         <Link to={`chirps/${ele.id}`} key={ele.user_id} className="link-to-chirp" >
