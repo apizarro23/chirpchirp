@@ -55,12 +55,12 @@ const Comments = () => {
             {`@${users[ele?.user_id - 1]?.username} said...`}
             <div className="comment-content">
               <div className="content">
+                <div className="text">
+                {ele.comment_content}
+                </div>
                 <div className="comment-modals">
                     <EditCommentModal comment={ele} />
                     <DeleteCommentModal comment={ele} />
-                </div>
-                <div className="text">
-                {ele.comment_content}
                 </div>
                 {/* <div className="options-buttons">
                 </div> */}

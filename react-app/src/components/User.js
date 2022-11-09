@@ -10,6 +10,8 @@ import defaultImage from "./images/icons8-bird-96.png"
 
 import { getChirps } from "../store/chirps"
 
+import EditUserModal from './UserModals/EditUserModal/index'
+
 function User() {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
@@ -61,11 +63,11 @@ function User() {
         <NavBar/>
       </div>
       <div className='profile-middle-container'>
-
-        <stong>
+        {/* <EditUserModal user={user} id={user.id} /> */}
+        {/* <stong> */}
           <img src={user.profile_pic} alt="main-pp" className='profile-pic' onError={e => e.currentTarget.src = defaultImage}/>
           {user.username}
-        </stong>
+        {/* </stong> */}
         {/* <strong>
           {user.email}
         </strong> */}
