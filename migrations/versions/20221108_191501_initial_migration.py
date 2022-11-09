@@ -1,8 +1,8 @@
-"""Initial migration.
+"""initial migration
 
-Revision ID: 6f30075480dc
+Revision ID: 7690438a687d
 Revises: 
-Create Date: 2022-09-01 16:29:03.482724
+Create Date: 2022-11-08 19:15:01.032041
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6f30075480dc'
+revision = '7690438a687d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,8 +22,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('profile_pic', sa.String(length=255), nullable=False),
-    sa.Column('bio', sa.String(length=255), nullable=False),
+    sa.Column('profile_pic', sa.String(length=255), nullable=True),
+    sa.Column('bio', sa.String(length=255), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('chirp_id', sa.Integer(), nullable=False),
     sa.Column('comment_content', sa.String(length=280), nullable=False),
-    sa.ForeignKeyConstraint(['chirp_id'], ['chirps.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['chirp_id'], ['chirps.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
