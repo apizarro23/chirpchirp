@@ -29,7 +29,7 @@ function User() {
   // console.log("THIS IS THE USER CHIRPS!!!!!!!!!!!", userChirps)
 
   useEffect(() => {
-    dispatch(getChirps()); // dispatch getBuzzes thunk which calls getBuzzes action
+    dispatch(getChirps()); // dispatch getChirps thunk which calls getBuzzes action
 
 
 
