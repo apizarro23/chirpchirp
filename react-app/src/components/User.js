@@ -87,7 +87,7 @@ function User() {
                         /> */}
                         {`@${users[ele?.user_id - 1]?.username}`}
                   </div>
-                  <div className="buzz-content">{ele.chirp_content}</div>
+                  <div className="chirp-content">{ele.chirp_content}</div>
                   <div>
                         <img src={ele.image_url} className="single-chirp-img" alt=""/>
                   </div>

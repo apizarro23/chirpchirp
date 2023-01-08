@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('chirp_id', sa.Integer(), nullable=False),
     sa.Column('comment_content', sa.String(length=280), nullable=False),
-    sa.ForeignKeyConstraint(['chirp_id'], ['chirps.id'], ),
+    sa.ForeignKeyConstraint(['chirp_id'], ['chirps.id'], onDelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

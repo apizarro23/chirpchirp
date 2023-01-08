@@ -3,6 +3,7 @@ const CREATE_CHIRP = 'chirps/CREATE_CHIRP'
 const EDIT_CHIRP = 'chirps/EDIT_CHIRP'
 const DELETE_CHIRP = 'chirps/DELETE_CHIRP'
 const GET_USER_CHIRPS = 'chirps/GET_USER_CHIRPS'
+const LIKE_CHIRP = 'chirps/LIKE_CHIRP'
 
 
 // ***ACTIONS***
@@ -29,6 +30,10 @@ const getUserChirpsAction = (chirps, userId) => ({
     type:GET_USER_CHIRPS,
     chirps,
     userId
+})
+const likeChirpAction = (like) => ({
+    type: LIKE_CHIRP,
+    like
 })
 
 
@@ -113,6 +118,27 @@ export const getUserChirps = (userId) => async (dispatch) => {
 }
 
 
+// like a chirp
+export const likeChirp = (id) => async (dispatch) => {
+    const response = await fetch(`/api/chirps/${id}/like`, {
+        method: 'POST'
+    })
+
+    if (response.ok) {
+        const like = await response.json()
+        await dispatch(likeChirpAction(like))
+        return like
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if (data.errors) {
+            return data.errors
+        } else {
+            return ["An error occurred. Please try again."]
+        }
+    }
+}
+
+
 // ***REDUCER***
 const chirpReducer = (state = {}, action) => {
     let newState = {}
@@ -140,6 +166,10 @@ const chirpReducer = (state = {}, action) => {
         case GET_USER_CHIRPS: {
             newState = {...state}
             for(let chirp of action.chirps) newState[chirp.id] = chirp
+            return newState
+        }
+        case LIKE_CHIRP: {
+            const newState = {...state}
             return newState
         }
         default:
