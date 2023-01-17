@@ -5,6 +5,7 @@ import EditChirpModal from "./ChirpFeed/EditChirpModal";
 import DeleteChirpModal from "./ChirpFeed/DeleteChirpModal";
 import solidHeart from "./images/solid_heart.svg"
 import hollowHeart from "./images/hollow_heart.svg"
+import defaultImage from "./images/icons8-bird-96.png"
 import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Chirp.css"
 
@@ -13,17 +14,21 @@ import "./Chirp.css"
 const Chirp = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector((state) => state?.session.user)
+    const user = useSelector((state) => state?.user)
 
     const chirp = props.chirp
+
+    // console.log('THIS IS A CHIRP', chirp)
     const users = props.users
 
     const [likeCounter, setLikeCounter] = useState(chirp?.likes?.length)
     const [likesArray, setLikesArray] = useState(chirp?.likes)
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
-    const [likedChirp, setLikedChirp] = useState(
-        likesArray?.find((like) => like?.user.id === user?.id))
+    // const [likedChirp, setLikedChirp] = useState(
+    //     likesArray?.find((like) => like?.user.id === user?.id))
+
+    const [likedChirp, setLikedChirp] = useState(user ? likesArray?.find((like) => like?.user.id === user.id) : null)
 
     const editChirp = () => {
         setShowDropdown(!showDropdown)
@@ -90,7 +95,7 @@ const Chirp = (props) => {
               <div className="chirp-content">
                 <div className="content-container">
                   <Link to={`/chirps/${chirp?.id}`}>
-                    <div className="single-chirp-content">{chirp?.content}</div>
+                    <div className="single-chirp-content">{chirp?.chirp_content}</div>
                     <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                   </Link>
                 </div>
@@ -98,11 +103,11 @@ const Chirp = (props) => {
               <div className="comment-and-like-container">
                 <div className="comment-icon-container">
                   <Link to={`/chirps/${chirp?.id}`}>
-                    <img
+                    {/* <img
                       className="chirp icon comment"
-                    //   src={commentIcon}
+                      // src={commentIcon}
                       alt="comment-icon"
-                    />
+                    /> */}
                     <div className="comment-counter">
                       {/* <span>{0}</span> */}
                     </div>
@@ -134,8 +139,9 @@ const Chirp = (props) => {
                   >
                     <img
                       src={users[chirp?.user_id - 1]?.profile_pic}
-                      alt=""
+                      alt="main-pp"
                       className="chirp-pfp"
+                      onError={ e => e.currentTarget.src = defaultImage}
                     />
                     {`@${users[chirp?.user_id - 1]?.username}`}
                   </Link>
@@ -151,7 +157,7 @@ const Chirp = (props) => {
               <div className="chirp-content">
                 <div className="content-container">
                   <Link to={`/chirps/${chirp?.id}`}>
-                    <div className="single-chirp-content">{chirp?.content}</div>
+                    <div className="single-chirp-content">{chirp?.chirp_content}</div>
                     <img src={chirp?.image_url} className="single-chirp-img" alt="" />
                   </Link>
                 </div>
@@ -159,11 +165,11 @@ const Chirp = (props) => {
               <div className="comment-and-like-container">
                 <div className="comment-icon-container">
                   <Link to={`/chirps/${chirp?.id}`}>
-                    <img
+                    {/* <img
                       className="chirp icon comment"
-                    //   src={commentIcon}
+                      src={commentIcon}
                       alt="comment-icon"
-                    />
+                    /> */}
                     <div className="comment-counter">
                       {/* <span>{0}</span> */}
                     </div>
