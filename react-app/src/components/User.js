@@ -10,6 +10,8 @@ import defaultImage from "./images/icons8-bird-96.png"
 
 import { getChirps } from "../store/chirps"
 
+import EditUserModal from './UserModals/EditUserModal/index'
+
 function User() {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
@@ -27,7 +29,7 @@ function User() {
   // console.log("THIS IS THE USER CHIRPS!!!!!!!!!!!", userChirps)
 
   useEffect(() => {
-    dispatch(getChirps()); // dispatch getBuzzes thunk which calls getBuzzes action
+    dispatch(getChirps()); // dispatch getChirps thunk which calls getBuzzes action
 
 
 
@@ -61,11 +63,11 @@ function User() {
         <NavBar/>
       </div>
       <div className='profile-middle-container'>
-
-        <stong>
+        {/* <EditUserModal user={user} id={user.id} /> */}
+        {/* <stong> */}
           <img src={user.profile_pic} alt="main-pp" className='profile-pic' onError={e => e.currentTarget.src = defaultImage}/>
           {user.username}
-        </stong>
+        {/* </stong> */}
         {/* <strong>
           {user.email}
         </strong> */}
@@ -85,7 +87,7 @@ function User() {
                         /> */}
                         {`@${users[ele?.user_id - 1]?.username}`}
                   </div>
-                  <div className="buzz-content">{ele.chirp_content}</div>
+                  <div className="chirp-content">{ele.chirp_content}</div>
                   <div>
                         <img src={ele.image_url} className="single-chirp-img" alt=""/>
                   </div>

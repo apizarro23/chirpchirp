@@ -60,9 +60,9 @@ const EditChirpForm = ({ chirp, onClick }) => {
         }
         await dispatch(editChirp(payload, chirp.id))
 
-        await dispatch(getChirps())
+        // await dispatch(getChirps())
         onClick()
-        setShowDropdown(false)
+        // setShowDropdown(false)
 
         // console.log('THIS IS THE PAYLOAD1', payload)
 
