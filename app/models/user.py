@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
 
     chirps = db.relationship('Chirp', back_populates='user')
     comments = db.relationship('Comment', back_populates='user')
+    likes = db.relationship('Like', back_populates='user', cascade="all, delete-orphan")
 
     @property
     def password(self):

@@ -1,6 +1,5 @@
-from urllib import response
 from flask import Blueprint, request, jsonify
-from app.models import chirp, comment, db, Chirp, Comment
+from app.models import chirp, comment, db, Chirp, Comment, Like
 from app.forms import chirp_form, comment_form, ChirpForm, CommentForm
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
@@ -65,26 +64,6 @@ def create_chirp():
     else:
         return {"errors": validation_errors_to_error_messages(new_chirp.errors)}, 400
 
-
-# @chirp_routes.route("/<chirp_id>/", methods=["PUT"])
-# # @login_required
-# # edit a chirp
-# def edit_chirp(chirp_id):
-#     chirp = Chirp.query.get(chirp_id)
-#     update = request.json
-
-#     if not chirp:
-#         return "404: This Chirp does not exist."
-
-#     if "chirp_content" in update.keys():
-#         chirp.chirp_content = update["chirp_content"]
-    
-#     if "image_url" in update.keys():
-#         chirp.image_url = update["image_url"]
-
-#     db.session.commit()
-    
-#     return jsonify(chirp.to_dict()), 200
 
 @chirp_routes.route("/<chirp_id>", methods=["PUT"])
 def update_chirp(chirp_id):
@@ -165,3 +144,24 @@ def create_comment(chirp_id):
     else:
         return {"errors": validation_errors_to_error_messages(new_comment.errors)}, 400
 
+
+# liking a chirp
+@chirp_routes.route("/<int:id>/like/", methods=["POST"])
+@chirp_routes.route("/<int:id>/like", methods=["POST"])
+def like_chirp(id):
+  chirp = Chirp.query.get(id)
+  if chirp is not None:
+    chirp_dict = chirp.to_dict()
+    likes_list = chirp_dict["likes"]
+    user_likes = [x for x in likes_list if x["user_id"] == int(current_user.get_id())]
+    if len(user_likes) > 0:
+      return {"message": "Cannot like a chirp more than once!"}, 400
+    new_like = Like(
+            user_id = current_user.get_id(),
+            chirp_id = id
+        )
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
+  else:
+    return {"message": "Chirp you are looking for does not exist"}, 404
