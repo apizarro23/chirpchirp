@@ -100,6 +100,7 @@ const ChirpFeed = () => {
 
                 </div> */}
             </div>
+            
             <div className="chirpFeed-right-container">
                 <div className='bottom-name'>Meet Me: Antony Pizarro</div>
                 <div className='HomePage-LinkedIn'>
