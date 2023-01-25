@@ -4,7 +4,9 @@
     border-width: thin;
     color: white;
     padding: 1em 2em;
-    word-break: break-all
+    /* word-break: break-all; */
+    overflow-wrap: break-word;
+
   }
   
   .heart-info-container {

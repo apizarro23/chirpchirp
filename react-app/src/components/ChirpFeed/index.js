@@ -66,7 +66,7 @@ const ChirpFeed = () => {
                 </div>
                 </div>
                 
-                <div className="TEST">
+                <div className="sort">
                     {chirps.map(chirp => (
                     <Chirp chirp={chirp} users={users}/>
                     ))}   
