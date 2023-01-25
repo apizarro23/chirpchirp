@@ -88,7 +88,7 @@ const Chirp = (props) => {
 
     return (
         <>
-          {user && user?.id == chirp?.user_id ? (
+          {user && user?.id === chirp?.user_id ? (
             <div className="single-chirp">
               <div className="user-and-options-container">
                 <div className="user-container">
