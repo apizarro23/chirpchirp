@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChirps } from "../store/chirps";
 import { getComments } from "../store/comments";
@@ -14,7 +14,7 @@ import git from "./images/github-logo.png"
 import defaultImage from "./images/icons8-bird-96.png"
 
 const ChirpDetails = () => {
-    // const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     let { chirpId } = useParams()
@@ -34,7 +34,12 @@ const ChirpDetails = () => {
         dispatch(getChirps(chirpId))
         dispatch(getComments(chirpId))
 
-
+        async function fetchData() {
+            const response = await fetch("/api/users/");
+            const responseData = await response.json();
+            setUsers(responseData.users);
+          }
+          fetchData();
         
     }, [dispatch, chirpId])
 
@@ -50,6 +55,19 @@ const ChirpDetails = () => {
                 {user && user?.id === chirp?.user_id ? (
                 <div className="single-chirp">
                 <div className="chirp-NavBar">
+                    <div className="chirp user">
+                        <Link
+                        to={`/users/${chirp?.user_id}`}
+                        className="user-profile-link"
+                        >
+                        <img
+                        src={users[chirp?.user_id - 1]?.profile_pic}
+                        alt=""
+                        className="chirp-pfp"
+                        />
+                        {`@${users[chirp?.user_id - 1]?.username}`}
+                        </Link>
+                    </div>
                     <div
                         className="chirps-name"
                         onClick={() => {
@@ -79,6 +97,19 @@ const ChirpDetails = () => {
                 </div>
                 ):(
                     <div>
+                    <div className="chirp user">
+                        <Link
+                        to={`/users/${chirp?.user_id}`}
+                        className="user-profile-link"
+                        >
+                        <img
+                        src={users[chirp?.user_id - 1]?.profile_pic}
+                        alt=""
+                        className="chirp-pfp"
+                        />
+                        {`@${users[chirp?.user_id - 1]?.username}`}
+                        </Link>
+                    </div>
                     <div className="chirp-content">
                       <div>{chirp?.chirp_content}</div>
                       <img src={chirp?.image_url} className="single-chirp-img" alt="" onError={ e => {

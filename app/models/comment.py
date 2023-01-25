@@ -7,7 +7,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     chirp_id = db.Column(db.Integer, db.ForeignKey('chirps.id'), nullable=False)
     comment_content = db.Column(db.String(280), nullable=False)
-    # likes = db.Column(db.Integer, default=0)
+    likes = db.Column(db.Integer, default=0)
 
     user = db.relationship('User', back_populates='comments')
     chirps = db.relationship('Chirp', back_populates='comments')
