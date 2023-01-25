@@ -15,30 +15,60 @@ const Chirp = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state?.user)
-
+    
     const chirp = props.chirp
-
-    // console.log('THIS IS A CHIRP', chirp)
     const users = props.users
+    // console.log("THIS IS THE USER", users[chirp?.user_id - 1])
+    // console.log('THIS IS A CHIRP', chirp)
 
     const [likeCounter, setLikeCounter] = useState(chirp?.likes?.length)
     const [likesArray, setLikesArray] = useState(chirp?.likes)
     const [editActive, setEditActive] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
-    // const [likedChirp, setLikedChirp] = useState(
-    //     likesArray?.find((like) => like?.user.id === user?.id))
-
     const [likedChirp, setLikedChirp] = useState(user ? likesArray?.find((like) => like?.user.id === user.id) : null)
 
     const editChirp = () => {
         setShowDropdown(!showDropdown)
     }
 
+    useEffect(() => {
+      const storedLikedUsers = localStorage.getItem("likedUsers");
+      if (storedLikedUsers) {
+          setLikesArray(JSON.parse(storedLikedUsers));
+      }
+  }, []);
+
+//   const handleLike = async (e) => {
+//     e.stopPropagation();
+
+//     if (likedChirp) {
+//         const unliked = fetch(`api/likes/${likedChirp?.id}`, {
+//             method: "DELETE"
+//         });
+
+//         setLikeCounter(prev => prev - 1);
+//         setLikedChirp(null);
+
+//     } else {
+//         const currentUserId = users[chirp?.user_id - 1];
+//         if (likesArray.includes(currentUserId)) {
+//             alert("You have already liked this chirp");
+//             return;
+//         }
+//         setLikesArray([...likesArray, currentUserId])
+//         localStorage.setItem("likedUsers", JSON.stringify(likesArray));
+//         const like = await dispatch(likeChirp(chirp?.id));
+//         setLikedChirp(like);
+//         setLikeCounter(prev => prev + 1);
+//     }
+// };
+
+  
     const handleLike = async (e) => {
         e.stopPropagation()
 
         if (likedChirp) {
-            const unliked = fetch(`api/likes/${likedChirp?.id}`, {
+            const unliked = fetch(`api/likes/${likedChirp?.id}/`, {
                 method: "DELETE",
             })
 
@@ -82,9 +112,9 @@ const Chirp = (props) => {
                       setEditActive(!editActive);
                     }}
                   >
-                    <button className="chirp-options-button">
+                    {/* <button className="chirp-options-button">
                       <i className="fa-solid fa-ellipsis fa-xl"></i>
-                    </button>
+                    </button> */}
                   </div>
                   <div className="options-buttons">
                     {showDropdown && <EditChirpModal chirp={chirp} id={chirp?.id} />}
@@ -148,9 +178,9 @@ const Chirp = (props) => {
                 </div>
                 <div className="chirp-options">
                   <button className="chirp-options-button">
-                    <Link to={`/chirps/${chirp?.id}`}>
+                    {/* <Link to={`/chirps/${chirp?.id}`}>
                       <i className="fa-solid fa-ellipsis fa-xl"></i>
-                    </Link>
+                    </Link> */}
                   </button>
                 </div>
               </div>
