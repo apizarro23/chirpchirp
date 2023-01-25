@@ -91,10 +91,11 @@
     min-width: 650px;
     max-width: 650px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-sizing: border-box;
     padding: 1em;
     overflow-wrap: break-word;
+    justify-content: space-between;
 }
 
 .single-chirp {
@@ -111,3 +112,8 @@
     max-width: 75px;
     max-height: 75px;
 }
+
+.heart-icon-container img {
+    width: 1em;
+    cursor: pointer;
+  }
