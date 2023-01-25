@@ -65,14 +65,19 @@ function User() {
       <div className='profile-middle-container'>
         {/* <EditUserModal user={user} id={user.id} /> */}
         {/* <stong> */}
+        <div className='user-profile'>
           <img src={user.profile_pic} alt="main-pp" className='profile-pic' onError={e => e.currentTarget.src = defaultImage}/>
           {user.username}
+          <div className='bio'>
+          {user.bio}
+          </div>
+
+        </div>
         {/* </stong> */}
         {/* <strong>
           {user.email}
         </strong> */}
         <strong>
-          {user.bio}
         </strong>
         <div className='sort'>
           {userChirps.map((ele) => (
@@ -85,7 +90,7 @@ function User() {
                           alt=""
                           className="chirp-profile-pic"
                         /> */}
-                        {`@${users[ele?.user_id - 1]?.username}`}
+                        {`@${users[ele?.user_id - 1]?.username} said...`}
                   </div>
                   <div className="chirp-content">{ele.chirp_content}</div>
                   <div>

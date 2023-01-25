@@ -59,3 +59,15 @@
     max-width: 75px;
     max-height: 75px;
 }
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5em;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
